@@ -1,0 +1,10 @@
+S. Amir, L. Marujo, and T. Lu´ıs. 2015. Finding function
+in form: Compositional character models for open vocab-
+ulary word representation. EMNLP.
+Liu, Y ., C. Sun, L. Lin, and X. Wang. 2016. Learning natural
+language inference using bidirectional LSTM model and
+inner-attention. ArXiv.
+Nostalgebraist. 2020. Interpreting gpt: the logit lens. White
+paper.
+Sukhbaatar, S., A. Szlam, J. Weston, and R. Fergus. 2015.
+End-to-end memory networks. NeurIPS.

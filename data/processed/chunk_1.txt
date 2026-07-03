@@ -1,0 +1,6 @@
+quent chapter in this textbook will make use of them. We’ll focus for now on left-
+to-right (sometimes called causal or autoregressive) language modeling, in which
+we are given a sequence of input tokens and predict output tokens one by one by
+conditioning on the prior context.
+The transformer is a neural network with a speciﬁc structure that includes a
+mechanism called self-attention or multi-head attention.1 Attention can be thought

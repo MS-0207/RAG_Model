@@ -1,0 +1,11 @@
+0 0 0 0 0 0 0 … 0 0 1 0 
+0 0 0 0 1 0 0 … 0 0 0 0 
+1 0 0 0 0 0 0 … 0 0 0 0 
+0 0 0 0 1 0 0 … 0 0 0 0 
+…
+Figure 9.12 Selecting the embedding matrix for the input sequence of token idsW by mul-
+tiplying a one-hot matrix corresponding to W by the embedding matrix E.
+These token embeddings are not position-dependent. To represent the position
+of each token in the sequence, we combine these token embeddings with positional
+embeddings speciﬁc to each position in an input sequence.positional
+embeddings

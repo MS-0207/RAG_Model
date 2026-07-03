@@ -1,0 +1,7 @@
+the reader is trying to guess what happens next.
+This fact that words have rich linguistic relationships with other words that may
+be far away pervades language. Consider two more examples:
+(9.4) The keys to the cabinet are on the table.
+(9.5) I walked along the pond, and noticed one of the trees along the bank.
+2 We say that in the ﬁrst example it corefers with the chicken, and in the second it corefers with the
+road; we’ll return to this in Chapter 23.

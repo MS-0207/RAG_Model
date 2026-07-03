@@ -1,0 +1,6 @@
+Consider it in one of these two sentences:
+(9.1) The chicken didn’t cross the road becauseit was too tired.
+(9.2) The chicken didn’t cross the road becauseit was too wide.
+In (9.1) it is the chicken (i.e., the reader knows that the chicken was tired), while
+in (9.2) it is the road (and the reader knows that the road was wide). 2 That is, if
+we are to compute the meaning of this sentence, we’ll need the meaning ofit to be

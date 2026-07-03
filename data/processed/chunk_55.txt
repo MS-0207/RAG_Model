@@ -1,0 +1,1 @@
+using t (of shape [1 ×d]) to stand for transformer and superscripts to demarcate

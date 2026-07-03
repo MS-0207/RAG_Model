@@ -1,0 +1,4 @@
+multilayer network (a multi-head attention layer, feedforward networks and layer
+normalization steps) that maps an input vectorxi in column i (corresponding to input
+1 Although multi-head attention developed historically from theRNN attention mechanism (Chapter 8),
+we’ll deﬁne attention from scratch here for readers who haven’t yet read Chapter 8.

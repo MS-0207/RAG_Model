@@ -1,0 +1,6 @@
+embeddings, via dividing by the square root of the dimensionality of the query and
+key vectors (dk). We thus replace the simpliﬁed Eq. 9.7 with Eq. 9.11. The ensuing
+softmax calculation resulting in αi j remains the same, but the output calculation for
+headi is now based on a weighted sum over the value vectors v (Eq. 9.13).
+Here’s a ﬁnal set of equations for computing self-attention for a single self-
+attention output vector ai from a single input vector xi. This version of attention

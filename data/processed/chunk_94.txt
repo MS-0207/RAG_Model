@@ -1,0 +1,8 @@
+9.5 The Language Modeling Head
+The last component of the transformer we must introduce is thelanguage modeling
+head. Here we are using the word head to mean the additional neural circuitry welanguage
+modeling head
+head add on top of the basic transformer architecture when we apply pretrained trans-
+former models to various tasks. The language modeling head is the circuitry we
+need to do language modeling.
+Recall that language models, from the simple n-gram models of Chapter 3 through

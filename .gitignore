@@ -1,0 +1,32 @@
+# created by virtualenv automatically
+RAG/.venv/Lib
+# Virtual Environment
+.venv/
+
+# Environment variables
+.env
+
+# PyCharm
+.idea/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Distribution / build
+build/
+dist/
+*.egg-info/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# SQLite databases
+*.db

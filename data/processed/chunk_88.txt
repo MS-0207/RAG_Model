@@ -1,0 +1,7 @@
+embeddings
+Where do we get these positional embeddings? The simplest method, called
+absolute position, is to start with randomly initialized embeddings correspondingabsolute
+position
+to each possible input position up to some maximum length. For example, just as
+we have an embedding for the wordﬁsh, we’ll have an embedding for the position 3.
+As with word embeddings, these positional embeddings are learned along with other

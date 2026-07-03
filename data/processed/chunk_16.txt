@@ -1,0 +1,5 @@
+representation for the word it at layer k +1. In computing the representation for it, we attend
+differently to the various words at layer k, with darker shades indicating higher self-attention
+values. Note that the transformer is attending highly to the columns corresponding to the
+tokens chicken and road , a sensible result, since at the point whereit occurs, it could plausibly
+corefer with the chicken or the road, and hence we’d like the representation for it to draw on

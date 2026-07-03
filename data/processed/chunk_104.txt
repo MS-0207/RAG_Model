@@ -1,0 +1,6 @@
+i .
+Now that we see all these transformer layers spread out on the page, we can point
+out another useful feature of the unembedding layer: as a tool for interpretability of
+the internals of the transformer that we call the logit lens (Nostalgebraist, 2020).logit lens
+We can take a vector from any layer of the transformer and, pretending that it is
+the preﬁnal embedding, simply multiply it by the unembedding layer to get logits,

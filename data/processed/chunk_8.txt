@@ -1,0 +1,7 @@
+will introduce machine translation with the encoder-decoder architecture.
+9.1 Attention
+Recall from Chapter 6 that for word2vec and other static embeddings, the repre-
+sentation of a word’s meaning is always the same vector irrespective of the context:
+the word chicken, for example, is always represented by the same ﬁxed vector. So
+a static vector for the word it might somehow encode that this is a pronoun used
+for animals and inanimate entities. But in context it has a much richer meaning.

@@ -1,0 +1,6 @@
+parallelized in matrix form.
+Fig. 9.8 and Fig. 9.9 also make it clear that attention is quadratic in the length
+of the input, since at each layer we need to compute dot products between each pair
+of tokens in the input. This makes it expensive to compute attention over very long
+documents (like entire novels). Nonetheless modern large language models manage
+to use quite long contexts of thousands or tens of thousands of tokens.

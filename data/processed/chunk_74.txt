@@ -1,0 +1,1 @@
+Multiplying the concatenatedN ×hdv matrix output byWO of shape [Adv ×d] yields

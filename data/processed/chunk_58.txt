@@ -1,0 +1,12 @@
+Fig. 9.7 shows a visualization of this movement.
+Token A
+residual
+ stream
+Token B
+residual 
+stream
+Figure 9.7 An attention head can move information from token A’s residual stream into
+token B’s residual stream.
+Crucially, the input and output dimensions of transformer blocks are matched so
+they can be stacked. Each token vectorxi at the input to the block has dimensionality
+d, and the output hi also has dimensionality d. Transformers for large language

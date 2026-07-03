@@ -1,0 +1,9 @@
+a new vector with zero mean and a standard deviation of one.
+ˆ x= (x−µ)
+σ (9.24)
+Finally, in the standard implementation of layer normalization, two learnable param-
+eters, γ and β, representing gain and offset values, are introduced.
+LayerNorm(x) =γ (x−µ)
+σ +β (9.25)
+Putting it all together The function computed by a transformer block can be ex-
+pressed by breaking it down with one equation for each component computation,

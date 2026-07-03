@@ -1,0 +1,11 @@
+computes ai by summing the values of the prior elements, each weighted by the
+similarity of its key to the query from the current element:
+qi = xiWQ; kj = xjWK; vj = xjWV (9.10)
+score(xi,xj) = qi ·kj√dk
+(9.11)
+αi j = softmax(score(xi,xj)) ∀j ≤i (9.12)
+headi =
+∑
+j≤i
+αi jvj (9.13)
+ai = headiWO (9.14)

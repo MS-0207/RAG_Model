@@ -1,0 +1,2 @@
+and compute a softmax to see the distribution over words that that vector might
+be representing. This can be a useful window into the internal representations of

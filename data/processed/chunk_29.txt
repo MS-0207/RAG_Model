@@ -1,0 +1,7 @@
+• And ﬁnally, as a value of a preceding element that gets weighted and summedvalue
+up to compute the output for the current element.
+To capture these three different roles, transformers introduce weight matrices
+WQ, WK, and WV. These weights will project each input vector xi into a represen-
+tation of its role as a key, query, or value:
+qi = xiWQ; ki = xiWK; vi = xiWV (9.9)
+Given these projections, when we are computing the similarity of the current ele-

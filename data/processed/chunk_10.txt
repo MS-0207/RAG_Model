@@ -1,0 +1,7 @@
+associated with the chickenin the ﬁrst sentence and associated with the roadin
+the second one, sensitive to the context.
+Furthermore, consider reading left to right like a causal language model, pro-
+cessing the sentence up to the word it:
+(9.3) The chicken didn’t cross the road becauseit
+At this point we don’t yet know which thingit is going to end up referring to! So a
+representation of it at this point might have aspects of both chicken and road as

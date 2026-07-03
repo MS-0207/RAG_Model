@@ -1,0 +1,5 @@
+ment xi with some prior element xj, we’ll use the dot product between the current
+element’squery vector qi and the preceding element’skey vector kj. Furthermore,
+the result of a dot product can be an arbitrarily large (positive or negative) value, and
+exponentiating large values can lead to numerical issues and loss of gradients during
+training. To avoid this, we scale the dot product by a factor related to the size of the

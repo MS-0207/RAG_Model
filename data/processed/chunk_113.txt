@@ -1,0 +1,7 @@
+them to draw on enormous amounts of context to predict upcoming words.
+Bibliographical and Historical Notes
+The transformer (Vaswani et al., 2017) was developed drawing on two lines of prior
+research: self-attention and memory networks.
+Encoder-decoder attention, the idea of using a soft weighting over the encodings
+of input words to inform a generative decoder (see Chapter 13) was developed by
+Graves (2013) in the context of handwriting generation, and Bahdanau et al. (2015)

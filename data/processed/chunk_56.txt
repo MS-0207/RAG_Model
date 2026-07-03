@@ -1,0 +1,27 @@
+10 CHAPTER 9 • T HE TRANSFORMER
+each computation inside the block:
+t1
+i = LayerNorm(xi) (9.26)
+t2
+i = MultiHeadAttention(t1
+i ,
+[
+t1
+1,···,t1
+N
+]
+) (9.27)
+t3
+i = t2
+i +xi (9.28)
+t4
+i = LayerNorm(t3
+i ) (9.29)
+t5
+i = FFN(t4
+i ) (9.30)
+hi = t5
+i +t3
+i (9.31)
+Notice that the only component that takes as input information from other tokens
+(other residual streams) is multi-head attention, which (as we see from Eq. 9.28)

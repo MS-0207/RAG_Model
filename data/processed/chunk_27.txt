@@ -1,0 +1,6 @@
+approach to computing ai: compare the xi to prior vectors, normalize those scores
+into a probability distribution used to weight the sum of the prior vector. But now
+we’re ready to remove the simpliﬁcations.
+A single attention head using query, key, and value matrices Now that we’ve
+seen a simple intuition of attention, let’s introduce the actual attention head, theattention head
+version of attention that’s used in transformers. (The word head is often used inhead

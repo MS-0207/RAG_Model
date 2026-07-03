@@ -1,0 +1,48 @@
+18 CHAPTER 9 • T HE TRANSFORMER
+wi
+Sample token to
+generate at position i+1
+feedforward
+layer norm
+attention
+layer norm
+U
+Input token
+Language
+Modeling
+Head
+Input
+Encoding
+ E
+i+
+…
+logits
+feedforward
+layer norm
+attention
+layer norm
+Layer 1
+Layer 2
+h1
+i  =  x2
+i
+x1
+i
+h2
+i  =  x3
+i
+feedforward
+layer norm
+attention
+layer norm
+hL
+i  
+hL-1
+i  =  xL
+i
+y1 y2 y|V|…Token probabilities
+u1 u2 u|V|…
+softmax
+wi+1
+Layer L
+Figure 9.15 A transformer language model (decoder-only), stacking transformer blocks

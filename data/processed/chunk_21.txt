@@ -1,0 +1,10 @@
+in which this same attention computation happens in parallel at each token position
+i. Thus a self-attention layer maps input sequences (x1,..., xn) to output sequences
+of the same length (a1,..., an).
+attentionattentionSelf-Attention
+Layer
+attentionattentionattention
+a1 a2 a3 a4 a5
+x3 x4 x5x1 x2
+Figure 9.3 Information ﬂow in causal self-attention. When processing each input xi, the
+model attends to all the inputs up to, and including xi.

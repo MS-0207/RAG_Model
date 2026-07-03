@@ -1,0 +1,5 @@
+architecture).
+9.6 Summary
+This chapter has introduced the transformer and its components for the task of lan-
+guage modeling. We’ll continue the task of language modeling including issues like
+training and sampling in the next chapter.

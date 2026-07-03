@@ -1,0 +1,7 @@
+9.1 • A TTENTION 7
+each head i in a self-attention layer has its own set of key, query and value matrices:
+WKi, WQi and WVi. These are used to project the inputs into separate key, value,
+and query embeddings for each head.
+When using multiple heads the model dimension d is still used for the input
+and output, the key and query embeddings have dimensionality dk, and the value
+embeddings are of dimensionality dv (again, in the original transformer paper dk =

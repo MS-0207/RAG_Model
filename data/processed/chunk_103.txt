@@ -1,0 +1,8 @@
+a word from these probabilities y. We might sample the highest probability word
+(‘greedy’ decoding), or use another of the sampling methods we’ll introduce in Sec-
+tion ??. In either case, whatever entry yk we choose from the probability vector y,
+we generate the word that has that index k.
+Fig. 9.15 shows the total stacked architecture for one tokeni. Note that the input
+to each transformer layer xℓ
+i is the same as the output from the preceding layer hℓ−1
+i .

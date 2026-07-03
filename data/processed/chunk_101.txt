@@ -1,0 +1,6 @@
+same weights for two different matrices in the model. Thus at the input stage of the
+transformer the embedding matrix (of shape[|V |×d]) is used to map from a one-hot
+vector over the vocabulary (of shape [1 ×|V |]) to an embedding (of shape [1 ×d]).
+And then in the language model head,ET, the transpose of the embedding matrix (of
+shape [d ×|V |]) is used to map back from an embedding (shape [1 ×d]) to a vector
+over the vocabulary (shape [1×|V |]). In the learning process, E will be optimized to

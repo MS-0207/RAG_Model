@@ -1,0 +1,6 @@
+dimensionality d. This initial embedding gets passed up (by residual connections),
+and is progressively added to by the other components of the transformer: the at-
+tention layer that we have seen, and the feedforward layer that we will introduce.
+Before the attention and feedforward layer is a computation called the layer norm.
+Thus the initial vector is passed through a layer norm and attention layer, and
+the result is added back into the stream, in this case to the original input vector

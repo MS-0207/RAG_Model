@@ -1,0 +1,6 @@
+9.1 • A TTENTION 5
+the softmax weight will likely be highest for xi, since xi is very similar to itself,
+resulting in a high dot product. But other context words may also be similar toi, and
+the softmax will also assign some weight to those words. Then we use these weights
+as the α values in Eq. 9.6 to compute the weighted sum that is our a3.
+The simpliﬁed attention in equations 9.6 – 9.8 demonstrates the attention-based

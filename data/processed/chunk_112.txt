@@ -1,0 +1,7 @@
+quential position of the token in the window.
+• Language models can be built out of stacks of transformer blocks, with a
+language model head at the top, which applies an unembedding matrix to
+the output H of the top layer to generate the logits, which are then passed
+through a softmax to generate word probabilities.
+• Transformer-based language models have a wide context window (200K to-
+kens or even more for very large models with special mechanisms) allowing

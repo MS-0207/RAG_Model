@@ -1,0 +1,6 @@
+output? Let’s look at all the internal shapes. We’ll have a dimension dk for the key
+and query vectors. The query vector and the key vector are both dimensionality
+1 ×dk, so we can take their dot product qi ·kj to produce a scalar. We’ll have a
+separate dimension dv for the value vectors. The transform matrix WQ has shape
+[d ×dk], WK is [d ×dk], and WV is [d ×dv]. So the output of headi in equation
+Eq. 9.13 is of shape [1 ×dv]. To get the desired output shape [1 ×d] we’ll need to

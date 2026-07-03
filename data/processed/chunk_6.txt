@@ -1,0 +1,6 @@
+using an embedding matrix E and a mechanism for encoding token position. Each
+column is followed by a language modeling head, which takes the embedding out-
+put by the ﬁnal transformer block, passes it through anunembedding matrix U and
+a softmax over the vocabulary to generate a single token for that column.
+Transformer-based language models are complex, and so the details will unfold
+over the next 5 chapters. In the next sections we’ll introduce multi-head attention,

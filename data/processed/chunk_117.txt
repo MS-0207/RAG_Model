@@ -1,0 +1,10 @@
+Sarma, D. Drain, D. Ganguli, Z. Hatﬁeld-Dodds, D. Her-
+nandez, A. Jones, J. Kernion, L. Lovitt, K. Ndousse,
+D. Amodei, T. Brown, J. Clark, J. Kaplan, S. McCan-
+dlish, and C. Olah. 2021. A mathematical framework for
+transformer circuits. White paper.
+Graves, A. 2013. Generating sequences with recurrent neural
+networks. ArXiv.
+Graves, A., G. Wayne, and I. Danihelka. 2014. Neural Tur-
+ing machines. ArXiv.
+Ling, W., C. Dyer, A. W. Black, I. Trancoso, R. Fermandez,

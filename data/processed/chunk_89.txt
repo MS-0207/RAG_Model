@@ -1,0 +1,14 @@
+parameters during training. We can store them in a matrix Epos of shape [N ×d].
+To produce an input embedding that captures positional information, we just
+add the word embedding for each input to its corresponding positional embedding.
+The individual token and position embeddings are both of size[1×d], so their sum is
+also [1×d], This new embedding serves as the input for further processing. Fig. 9.13
+shows the idea.
+X = Composite
+Embeddings
+(word + position)
+Transformer Block
+Janet
+1
+will
+2

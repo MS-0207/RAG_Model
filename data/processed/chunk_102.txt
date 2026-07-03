@@ -1,0 +1,8 @@
+be good at doing both of these mappings. We therefore sometimes call the transpose
+ET the unembedding layer because it is performing this reverse mapping.unembedding
+A softmax layer turns the logits u into the probabilities y over the vocabulary.
+u = hL
+N ET (9.45)
+y = softmax(u) (9.46)
+We can use these probabilities to do things like help assign a probability to a
+given text. But the most important usage to generate text, which we do bysampling

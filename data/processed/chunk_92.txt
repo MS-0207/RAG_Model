@@ -1,0 +1,6 @@
+spondingly fewer at the outer length limits. These latter embeddings may be poorly
+trained and may not generalize well during testing. An alternative is to choose a
+static function that maps integer inputs to real-valued vectors in a way that better
+handle sequences of arbitrary length. A combination of sine and cosine functions
+with differing frequencies was used in the original transformer work. Sinusoidal po-
+sition embeddings may also help in capturing the inherent relationships among the

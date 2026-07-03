@@ -1,0 +1,6 @@
+language models of Chapter 3 compute the probability of a word given counts of
+its occurrence with the n −1 prior words. The context is thus of size n −1. For
+transformer language models, the context is the size of the transformer’s context
+window, which can be quite large, like 32K tokens for large models (and much larger
+contexts of millions of words are possible with special long-context architectures).
+The job of the language modeling head is to take the output of the ﬁnal trans-

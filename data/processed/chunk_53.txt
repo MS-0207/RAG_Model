@@ -1,0 +1,16 @@
+layer normalization is to calculate the mean, µ, and standard deviation, σ, over the
+elements of the vector to be normalized. Given an embedding vector x of dimen-
+sionality d, these values are calculated as follows.
+µ = 1
+d
+d∑
+i=1
+xi (9.22)
+σ =
+√1
+d
+d∑
+i=1
+(xi −µ)2 (9.23)
+Given these values, the vector components are normalized by subtracting the mean
+from each and dividing by the standard deviation. The result of this computation is

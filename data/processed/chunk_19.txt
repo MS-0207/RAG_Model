@@ -1,0 +1,7 @@
+4 CHAPTER 9 • T HE TRANSFORMER
+9.1.1 Attention more formally
+As we’ve said, the attention computation is a way to compute a vector representation
+for a token at a particular layer of a transformer, by selectively attending to and
+integrating information from prior tokens at the previous layer. Attention takes an
+input representation xi corresponding to the input token at position i, and a context
+window of prior inputs x1..xi−1, and produces an output ai.

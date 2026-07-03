@@ -1,0 +1,36 @@
+ai
+xi-1 xixi-2xi-3
+WK
+1
+Head 1
+WV
+1 WQ
+1
+…
+…
+WK
+2
+Head 2
+WV
+2 WQ
+2 WK
+8
+Head 8
+WV
+8 WQ
+8
+ai
+WO  [hdv x d]
+[1 x dv ]
+[1 x d]
+[1 x d]
+[1 x hdv ]
+Project down to d
+Concatenate Outputs
+Each head
+attends diﬀerently
+to context
+…
+[1 x dv ]
+Figure 9.5 The multi-head attention computation for input xi, producing output ai. A multi-head attention
+layer has A heads, each with its own key, query and value weight matrices. The outputs from each of the heads

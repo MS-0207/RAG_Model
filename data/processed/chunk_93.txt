@@ -1,0 +1,8 @@
+positions, like the fact that position 4 in an input is more closely related to position
+5 than it is to position 17.
+A more complex style of positional embedding methods extend this idea of cap-
+turing relationships even further to directly represent relative position instead ofrelative
+position
+absolute position, often implemented in the attention mechanism at each layer rather
+than being added once at the initial input.
+9.5 The Language Modeling Head

@@ -1,0 +1,6 @@
+looks at all the neighboring tokens in the context. The output from attention, how-
+ever, is then added into this token’s embedding stream. In fact, Elhage et al. (2021)
+show that we can view attention heads as literally moving information from the
+residual stream of a neighboring token into the current stream. The high-dimensional
+embedding space at each position thus contains information about the current to-
+ken and about neighboring tokens, albeit in different subspaces of the vector space.

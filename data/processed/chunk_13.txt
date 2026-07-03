@@ -1,0 +1,6 @@
+including words like pond. (We’ll discuss word senses more in Chapter 11.)
+The point of all these examples is that these contextual words that help us com-
+pute the meaning of words in context can be quite far away in the sentence or para-
+graph. Transformers can build contextual representations of word meaning, contex-
+tual embeddings, by integrating the meaning of these helpful contextual words. In acontextual
+embeddings

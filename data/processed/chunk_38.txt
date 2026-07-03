@@ -1,0 +1,5 @@
+current token, or to look for particular kinds of patterns in the context.
+So in multi-head attention we have A separate attention heads that reside inmulti-head
+attention
+parallel layers at the same depth in a model, each with its own set of parameters that
+allows the head to model different aspects of the relationships among inputs. Thus

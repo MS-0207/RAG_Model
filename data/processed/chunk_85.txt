@@ -1,0 +1,8 @@
+elements are 0 except one, the element whose dimension is the word’s index in the
+vocabulary, which has value 1. So if the word “thanks” has index 5 in the vocabulary,
+x5 = 1, and xi = 0 ∀i ̸= 5, as shown here:
+[0 0 0 0 1 0 0 ... 0 0 0 0]
+1 2 3 4 5 6 7 ... ... |V|
+Multiplying by a one-hot vector that has only one non-zero elementxi = 1 simply
+selects out the relevant row vector for wordi, resulting in the embedding for word i,
+as depicted in Fig. 9.11.

@@ -1,0 +1,20 @@
+8 CHAPTER 9 • T HE TRANSFORMER
+9.2 Transformer Blocks
+The self-attention calculation lies at the core of what’s called a transformer block,
+which, in addition to the self-attention layer, includes three other kinds of layers: (1)
+a feedforward layer, (2) residual connections, and (3) normalizing layers (colloqui-
+ally called “layer norm”).
+Layer Norm
+xi
++
+hi-1
+Layer Norm
+MultiHead
+Attention
+Feedforward
+xi-1 xi+1
+hi hi+1
++
+……
+Residual
+Stream

@@ -1,0 +1,7 @@
+transformers to refer to speciﬁc structured layers). The attention head allows us to
+distinctly represent three different roles that each input embedding plays during the
+course of the attention process:
+• As the current element being compared to the preceding inputs. We’ll refer to
+this role as a query.query
+• In its role as a preceding input that is being compared to the current element
+to determine a similarity weight. We’ll refer to this role as akey.key

@@ -1,0 +1,7 @@
+16 CHAPTER 9 • T HE TRANSFORMER
+The ﬁnal representation of the input, the matrix X, is an [N ×d] matrix in which
+each row i is the representation of the ith token in the input, computed by adding
+E[id(i)]—the embedding of the id of the token that occurred at position i—, to P[i],
+the positional embedding of position i.
+A potential problem with the simple position embedding approach is that there
+will be plenty of training examples for the initial positions in our inputs and corre-

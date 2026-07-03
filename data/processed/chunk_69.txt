@@ -1,0 +1,5 @@
+setting of language modeling: guessing the next word is pretty simple if you already
+know it! To ﬁx this, the elements in the upper-triangular portion of the matrix are set
+to −∞, which the softmax will turn to zero, thus eliminating any knowledge of words
+that follow in the sequence. This is done in practice by adding a mask matrix M in
+which Mi j = −∞ ∀j > i (i.e. for the upper-triangular portion) andMi j = 0 otherwise.
