@@ -1,6 +1,6 @@
 2 CHAPTER 9 • T HE TRANSFORMER
 token i) to an output vector hi. The set of n blocks maps an entire context window
-of input vectors (x1,..., xn) to a window of output vectors (h1,..., hn) of the same
+of input vectors (x1, ...,xn) to a window of output vectors (h1, ...,hn) of the same
 length. A column might contain from 12 to 96 or more stacked blocks.
 The column of blocks is preceded by theinput encoding component, which pro-
 cesses an input token (like the wordthanks) into a contextual vector representation,

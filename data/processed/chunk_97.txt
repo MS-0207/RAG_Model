@@ -1,6 +1,6 @@
 former layer from the last token N and use it to predict the upcoming word at posi-
 tion N +1. Fig. 9.14 shows how to accomplish this task, taking the output of the last
-token at the last layer (the d-dimensional output embedding of shape [1 ×d]) and
+token at the last layer (the d-dimensional output embedding of shape [1× d]) and
 producing a probability distribution over words (from which we will choose one to
 generate).
 The ﬁrst module in Fig. 9.14 is a linear layer, whose job is to project from the

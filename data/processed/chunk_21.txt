@@ -1,6 +1,6 @@
 in which this same attention computation happens in parallel at each token position
-i. Thus a self-attention layer maps input sequences (x1,..., xn) to output sequences
-of the same length (a1,..., an).
+i. Thus a self-attention layer maps input sequences (x1, ...,xn) to output sequences
+of the same length (a1, ...,an).
 attentionattentionSelf-Attention
 Layer
 attentionattentionattention

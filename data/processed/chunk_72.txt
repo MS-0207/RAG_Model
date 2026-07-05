@@ -2,5 +2,5 @@ Parallelizing multi-head attention In multi-head attention, as with self-attenti
 the input and output have the model dimension d, the key and query embeddings
 have dimensionality dk, and the value embeddings are of dimensionality dv (again,
 in the original transformer paper dk = dv = 64, A = 8, and d = 512). Thus for
-each head i, we have weight layers WQi of shape [d ×dk], WKi of shape [d ×dk],
-and WVi of shape [d ×dv], and these get multiplied by the inputs packed into X
+each head i, we have weight layers WQi of shape [d× dk], WKi of shape [d× dk],
+and WVi of shape [d× dv], and these get multiplied by the inputs packed into X

@@ -1,18 +1,18 @@
 dv = 64, A = 8, and d = 512). Thus for each head i, we have weight layers WQi of
-shape [d ×dk], WKi of shape [d ×dk], and WVi of shape [d ×dv].
+shape [d× dk], WKi of shape [d× dk], and WVi of shape [d× dv].
 Below are the equations for attention augmented with multiple heads; Fig. 9.5
 shows an intuition.
 qc
 i = xiWQc; kc
-j = xjWKc; vc
-j = xjWVc; ∀c 1 ≤c ≤A (9.15)
-scorec(xi,xj) =
+j = x jWKc; vc
+j = x jWVc; ∀ c 1≤ c≤ A (9.15)
+scorec(xi, x j) =
 qc
-i ·kc
+i· kc
 j√dk
 (9.16)
 αc
-i j = softmax(scorec(xi,xj)) ∀j ≤i (9.17)
+i j = softmax(scorec(xi, x j))∀ j≤ i (9.17)
 headc
 i =
 ∑
@@ -20,4 +20,4 @@ j≤i
 αc
 i jvc
 j (9.18)
-ai = (head1 ⊕head2...⊕headA)WO (9.19)
+ai = ( head1⊕ head2...⊕ headA)WO (9.19)

@@ -1,4 +1,4 @@
-parameters during training. We can store them in a matrix Epos of shape [N ×d].
+parameters during training. We can store them in a matrix Epos of shape [N× d].
 To produce an input embedding that captures positional information, we just
 add the word embedding for each input to its corresponding positional embedding.
 The individual token and position embeddings are both of size[1×d], so their sum is

@@ -1,2 +1,2 @@
 output hL
-N , which represents the output token embedding at positionN from the ﬁnal
+N, which represents the output token embedding at positionN from the ﬁnal

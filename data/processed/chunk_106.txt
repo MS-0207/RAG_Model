@@ -40,7 +40,7 @@ i
 hL-1
 i  =  xL
 i
-y1 y2 y|V|…Token probabilities
+y1y2 y|V|…Token probabilities
 u1 u2 u|V|…
 softmax
 wi+1

@@ -1,7 +1,7 @@
-N ) to a probability distribution over words in the
+N) to a probability distribution over words in the
 vocabulary V .
-block L, (hence of shape [1 ×d]) to the logit vector, or score vector, that will have alogit
-single score for each of the |V |possible words in the vocabularyV . The logit vector
-u is thus of dimensionality 1 ×|V |.
+block L, (hence of shape [1× d]) to the logit vector, or score vector, that will have alogit
+single score for each of the|V| possible words in the vocabularyV . The logit vector
+u is thus of dimensionality 1×|V|.
 This linear layer can be learned, but more commonly we tie this matrix to (the
 transpose of) the embedding matrix E. Recall that in weight tying , we use theweight tying

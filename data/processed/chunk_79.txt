@@ -1,6 +1,6 @@
 initital word + positional embedding vectors that we have been describing byX. But
 for subsequent layers k, the input is the output from the previous layer Hk−1. We
 can also break down the computation performed in a transformer layer, showing one
-equation for each component computation. We’ll use T (of shape [N ×d]) to stand
+equation for each component computation. We’ll use T (of shape [N× d]) to stand
 for transformer and superscripts to demarcate each computation inside the block,
 and again use X to mean the input to the block from the previous layer or the initial

@@ -1,13 +1,6 @@
 # Load documents from various formats
-
 from pathlib import Path
-from langchain_core.documents import Document
-from langchain_community.document_loaders import (
-    PyPDFLoader,
-    TextLoader,
-    UnstructuredWordDocumentLoader,
-)
-import os
+from langchain_community.document_loaders import (PyPDFLoader,TextLoader,UnstructuredWordDocumentLoader)
 
 def load_single_file(file_path: Path):
     ext = file_path.suffix.lower()
@@ -34,5 +27,7 @@ def load_all_documents(directory: str):
     for file_path in Path(directory).rglob("*"):
         if file_path.is_file():
             docs = load_single_file(file_path)
+
             all_docs.extend(docs)
+
     return all_docs

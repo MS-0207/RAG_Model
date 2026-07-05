@@ -3,7 +3,7 @@ following computation:
 head = softmax
 (
 mask
-(QK⊺
+( QK⊺
 √dk
 ))
 V

@@ -1,6 +1,6 @@
-to produce Q of shape [N ×dk], K of shape [N ×dk], and V of shape [N ×dv].
-The output of each of the A heads is of shape N ×dv, and so the output of the
-multi-head layer with A heads consists of A matrices of shape N ×dv. To make use
+to produce Q of shape [N× dk], K of shape [N× dk], and V of shape [N× dv].
+The output of each of the A heads is of shape N× dv, and so the output of the
+multi-head layer with A heads consists of A matrices of shape N× dv. To make use
 of these matrices in further processing, they are concatenated to produce a single
-output with dimensionality N ×hdv. Finally, we use a ﬁnal linear projection WO
-of shape [Adv ×d], that reshape it to the original output dimension for each token.
+output with dimensionality N× hdv. Finally, we use a ﬁnal linear projection WO
+of shape [Adv× d], that reshape it to the original output dimension for each token.

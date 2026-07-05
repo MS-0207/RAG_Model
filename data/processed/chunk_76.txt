@@ -1,8 +1,3 @@
-X
-x
-WQ
-=
-Value 
 Token 1
 Value 
 Token 2

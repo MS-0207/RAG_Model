@@ -1,6 +1,6 @@
 dimensions of transformer blocks are matched so they can be stacked. Since each
 token xi at the input to the block is represented by an embedding of dimensionality
-[1 ×d], that means the input X and output H are both of shape [N ×d].
+[1× d], that means the input X and output H are both of shape [N× d].
 9.4 The input: embeddings for token and position
 Let’s talk about where the inputX comes from. Given a sequence of N tokens (N is
-the context length in tokens), the matrix X of shape [N ×d] has an embedding forembedding
+the context length in tokens), the matrix X of shape [N× d] has an embedding forembedding

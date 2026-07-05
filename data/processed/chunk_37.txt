@@ -1,4 +1,4 @@
-reshape the head output, and so WO is of shape [dv ×d]. In the original transformer
+reshape the head output, and so WO is of shape [dv× d]. In the original transformer
 work (Vaswani et al., 2017),d was 512, dk and dv were both 64.
 Multi-head Attention Equations 9.11-9.13 describe a single attention head. But
 actually, transformers use multiple attention heads. The intuition is that each head

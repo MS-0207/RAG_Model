@@ -1,4 +1,4 @@
-associated with the chickenin the ﬁrst sentence and associated with the roadin
+associated with the chicken in the ﬁrst sentence and associated with the road in
 the second one, sensitive to the context.
 Furthermore, consider reading left to right like a causal language model, pro-
 cessing the sentence up to the word it:

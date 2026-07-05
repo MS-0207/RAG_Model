@@ -1,15 +1,16 @@
 Fig. 9.9 shows the resulting masked QK⊺ matrix. (we’ll see in Chapter 11 how to
 make use of words in the future for tasks that need it).
 q1•k1
-q2•k1 q2•k2
-q4•k1 q4•k2 q4•k3 q4•k4
-q3•k1 q3•k2 q3•k3
+q2•k1q2•k2
+q4•k1q4•k2q4•k3q4•k4
+q3•k1q3•k2q3•k3
 N
 N
-−∞ −∞
-−∞ −∞
+−∞−∞
+−∞−∞
 −∞
 −∞
-Figure 9.9 The N ×N QK⊺ matrix showing the qi ·kj values, with the upper-triangle por-
-tion of the comparisons matrix zeroed out (set to −∞, which the softmax will turn to zero).
+Figure 9.9 The N× N QK⊺ matrix showing the qi· k j values, with the upper-triangle por-
+tion of the comparisons matrix zeroed out (set to−∞, which the softmax will turn to zero).
 Fig. 9.10 shows a schematic of all the computations for a single attention head
+parallelized in matrix form.

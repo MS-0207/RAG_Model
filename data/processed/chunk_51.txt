@@ -1,6 +1,6 @@
 network be larger than the model dimensionality d. (For example in the original
 transformer model, d = 512 and dff = 2048.)
-FFN(xi) =ReLU(xiW1 +b1)W2 +b2 (9.21)
+FFN(xi) = ReLU(xiW1 + b1)W2 + b2 (9.21)
 Layer Norm At two stages in the transformer block we normalize the vector (Ba
 et al., 2016). This process, called layer norm (short for layer normalization), is onelayer norm
 of many forms of normalization that can be used to improve training performance

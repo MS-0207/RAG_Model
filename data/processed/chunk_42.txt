@@ -4,7 +4,7 @@ WK
 1
 Head 1
 WV
-1 WQ
+1WQ
 1
 …
 …
@@ -12,12 +12,12 @@ WK
 2
 Head 2
 WV
-2 WQ
+2WQ
 2 WK
 8
 Head 8
 WV
-8 WQ
+8WQ
 8
 ai
 WO  [hdv x d]

@@ -2,10 +2,10 @@
 embedding:
 T1 = LayerNorm(X) (9.39)
 T2 = MultiHeadAttention(T1) (9.40)
-T3 = T2 +X (9.41)
+T3 = T2 + X (9.41)
 T4 = LayerNorm(T3) (9.42)
 T5 = FFN(T4) (9.43)
-H = T5 +T3 (9.44)
+H = T5 + T3 (9.44)
 Here when we use a notation like FFN (T3) we mean that the same FFN is applied
 in parallel to each of the N embedding vectors in the window. Similarly, each of the
 N tokens is normed in parallel in the LayerNorm. Crucially, the input and output

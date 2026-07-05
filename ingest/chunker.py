@@ -1,5 +1,5 @@
 # Split documents into chunks
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 def chunk_documents(documents, chunk_size=500, chunk_overlap=50):
     """
@@ -10,11 +10,4 @@ def chunk_documents(documents, chunk_size=500, chunk_overlap=50):
         chunk_overlap=chunk_overlap
     )
     return splitter.split_documents(documents)
-
-
-
-
-
-
-
 
