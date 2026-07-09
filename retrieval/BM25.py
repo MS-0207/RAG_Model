@@ -79,7 +79,6 @@ def vector_mmr_retrieval(
 
     return mmr_docs
 
-
 def merge_and_deduplicate(
     bm25_docs: List[Document],
     vector_docs: List[Document]

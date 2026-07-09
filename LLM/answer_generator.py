@@ -59,7 +59,6 @@ Return JSON with exactly these keys:
         "format_instructions": parser.get_format_instructions()
     })
 
-
 def check_grounding(
     query: str,
     answer: str,

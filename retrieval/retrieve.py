@@ -47,4 +47,5 @@ if __name__ == "__main__":
         grounding_result=check_grounding,
         top_docs=responses
     )
+
     print(f"print final response {final_response}")

@@ -31,3 +31,4 @@ def load_all_documents(directory: str):
             all_docs.extend(docs)
 
     return all_docs
+
