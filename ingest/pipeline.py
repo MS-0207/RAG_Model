@@ -2,28 +2,41 @@ from ingest.loader import load_all_documents
 from ingest.chunker import chunk_documents
 from ingest.generate import run_embedding_pipeline
 from ingest.save_chunks import save_chunks
+# from utils.config import RAW_DIR, PROCESSED_DIR
+# from utils.config import RAW_DIR
+from utils.logger import get_logger
+from utils.config import settings
 
-RAW_DIR = r"C:\Users\msdha\PycharmProjects\RAG_Project\RAG\data\raw"
-PROCESSED_DIR = r"C:\Users\msdha\PycharmProjects\RAG_Project\RAG\data\processed"
+
+logger = get_logger(__name__)
 
 def run_ingestion_pipeline():
 
-    print("📥 Loading documents...")
-    docs = load_all_documents(RAW_DIR)
-    print(f"✅ Loaded {len(docs)} documents")
+    logger.info("Loading documents...")
+    docs = load_all_documents(settings.raw_dir)
+    logger.info("Loaded %d documents",len(docs))
 
-    print('chunking documents...')
+    logger.info("Chunking documents...")
     chunks = chunk_documents(docs)
-    print(f"✅ chunks {len(chunks)} ")
+    logger.info("Created %d chunks", len(chunks))
 
-    print('saving documents...')
-    save_chunks(chunks, PROCESSED_DIR)
-    print(f"Total chunks: {len(chunks)}")
+    logger.info("saving chunks...")
+    save_chunks(chunks, settings.processed_dir)
+    logger.info("Loaded total %d chunks", {len(chunks)})
 
-    print('saving embeddings...')
-    run_embedding_pipeline()
+    logger.info("Creating embeddings and FAISS vector store...")
+    embedding_result = run_embedding_pipeline(
+        settings.processed_dir,
+        settings.vector_store_dir
+    )
 
-    print("Vector store built successfully.")
+    return {
+        "status": "success",
+        "documents_loaded": len(docs),
+        "chunks_created": len(chunks),
+        "embedding_result": embedding_result
+  }
 
-if __name__ == "__main__":
-    run_ingestion_pipeline()
+#
+# if __name__ == "__main__":
+#     print(run_ingestion_pipeline())

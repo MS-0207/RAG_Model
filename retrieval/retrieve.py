@@ -48,4 +48,3 @@ if __name__ == "__main__":
         top_docs=responses
     )
 
-    print(f"print final response {final_response}")

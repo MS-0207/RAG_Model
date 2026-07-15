@@ -1,34 +1,35 @@
 # retrieval/hybrid_retriever.py
-
 from typing import List
-import os
 from langchain_core.documents import Document
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
 from rank_bm25 import BM25Okapi
-
 from dotenv import load_dotenv
-import os
-
-load_dotenv()
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-VECTOR_STORE_DIR = r"C:\Users\msdha\PycharmProjects\RAG_Project\RAG\embeddings\cache"
+from api.exception import VectorStoreNotFoundError
+# from utils.config import VECTOR_STORE_DIR
+# from utils.config import OPENAI_API_KEY
+from utils.config import settings
+from pathlib import Path
+from api.exception import VectorStoreNotFoundError
 
 def load_vector_store():
-    embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
+    embeddings = OpenAIEmbeddings()
+
+    if not Path(settings.VECTOR_STORE_DIR).exists():
+        raise VectorStoreNotFoundError(
+            "Vector database not found. Please run /documents/ingest first."
+        )
 
     db = FAISS.load_local(
-        VECTOR_STORE_DIR,
+        settings.VECTOR_STORE_DIR,
         embeddings,
         allow_dangerous_deserialization=True
     )
 
     return db
 
-
 def get_all_docs_from_faiss(db) -> List[Document]:
     return list(db.docstore._dict.values())
-
 
 def bm25_retrieval(
     query: str,

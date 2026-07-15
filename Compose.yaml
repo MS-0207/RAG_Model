@@ -1,0 +1,13 @@
+services:
+  rag_api:
+    build: .
+    container_name: rag_api
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./data/raw:/app/data/raw
+      - ./data/processed:/app/data/processed
+      - ./embeddings/cache:/app/embeddings/cache
+    restart: unless-stopped

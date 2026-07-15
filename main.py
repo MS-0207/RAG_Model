@@ -1,54 +1,69 @@
-from retrieval.BM25 import hybrid_retrieval
+from langchain_community.vectorstores import FAISS
+
+from LLM.answer_generator import check_grounding, generate_answer
 from reranking.cross_encoder_rank import cross_encoder_rerank
-from LLM.answer_generator import generate_answer
-from  LLM.answer_generator import check_grounding
+from retrieval.BM25 import (
+    bm25_retrieval,
+    get_all_docs_from_faiss,
+    merge_and_deduplicate,
+    vector_mmr_retrieval,
+)
 from Response.response import build_final_response
 from utils.logger import get_logger
 
 logger = get_logger(__name__)
 
-def run_rag_pipeline(query: str):
+def run_rag_pipeline(
+    query: str,
+    db: FAISS,
+) -> dict:
+    all_docs = get_all_docs_from_faiss(db)
 
-    retrieved_docs = hybrid_retrieval(
+    bm25_docs = bm25_retrieval(
         query=query,
-        bm25_top_k=10,
-        vector_top_k=10,
-        fetch_k=30,
-        lambda_mult=0.5
+        docs=all_docs,
+        top_k=10,
     )
 
-    logger.info("Ranking by cross encoder...")
-    responses = cross_encoder_rerank(
+    vector_docs = vector_mmr_retrieval(
+        query=query,
+        db=db,
+        top_k=10,
+        fetch_k=30,
+        lambda_mult=0.5,
+    )
+
+    retrieved_docs = merge_and_deduplicate(
+        bm25_docs=bm25_docs,
+        vector_docs=vector_docs,
+    )
+
+    logger.info("Ranking documents with cross encoder")
+
+    top_docs = cross_encoder_rerank(
         query=query,
         docs=retrieved_docs,
-        top_k=3
-    )
-    logger.info("Retrieving ground truth...")
-    generate = generate_answer(
-        query=query,
-        top_docs=responses
+        top_k=3,
     )
 
-    logger.info("Computing ground truth...")
-    check_ground = check_grounding(
+    answer_result = generate_answer(
         query=query,
-        answer=generate['answer'],
-        top_docs=responses
+        top_docs=top_docs,
     )
 
-    logger.info("Final response...")
+    grounding_result = check_grounding(
+        query=query,
+        answer=answer_result["answer"],
+        top_docs=top_docs,
+    )
+
     final_response = build_final_response(
         query=query,
-        answer_result=generate,
-        grounding_result=check_ground,
-        top_docs=responses
+        answer_result=answer_result,
+        grounding_result=grounding_result,
+        top_docs=top_docs,
     )
-    print(f"print final response {final_response}")
+
+    logger.info("Final RAG response generated")
+
     return final_response
-
-
-
-if __name__ == "__main__":
-    query = input("Enter your query: ")
-    response = run_rag_pipeline(query)
-    print(response)

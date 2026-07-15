@@ -1,12 +1,12 @@
 from pathlib import Path
 from datetime import datetime
-
-RAW_DIR = Path(r"C:\Users\msdha\PycharmProjects\RAG_Project\RAG\data\raw")
+from utils.logger import get_logger
+from utils.config import settings
 
 
 def get_document_information(document_name: str):
 
-    file_path = RAW_DIR / document_name
+    file_path = settings.RAW_DIR / document_name
 
     if not file_path.exists():
         return {

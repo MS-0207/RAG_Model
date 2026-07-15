@@ -1,14 +1,12 @@
 from pathlib import Path
 from datetime import datetime
-
-RAW_DIR = Path(r"C:\Users\msdha\PycharmProjects\RAG_Project\RAG\data\raw")
-
+from utils.config import settings
 
 def get_all_documents():
 
     documents = []
 
-    for file in RAW_DIR.rglob("*"):
+    for file in settings.RAW_DIR.rglob("*"):
 
         if file.is_file():
 

@@ -1,11 +1,10 @@
 from pathlib import Path
-
-RAW_DIR = Path(r"C:\Users\msdha\PycharmProjects\RAG_Project\RAG\data\raw")
+from utils.config import settings
 
 
 def delete_document_from_storage(document_name: str):
 
-    file_path = RAW_DIR / document_name
+    file_path =settings.RAW_DIR / document_name
 
     if not file_path.exists():
         return {
