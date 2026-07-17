@@ -1,8 +1,5 @@
 from fastapi import Header, HTTPException
-from utils.config import settings
-from collections.abc import Generator
-from sqlalchemy.orm import Session
-from Database.connection import SessionLocal
+from api.config import settings
 
 
 def verify_api_key(x_api_key: str = Header(...)):
@@ -19,7 +16,6 @@ def verify_api_key(x_api_key: str = Header(...)):
 #------------------------------------------
 
 from langchain_community.vectorstores import FAISS
-from langchain_openai import OpenAIEmbeddings
 from retrieval.BM25 import load_vector_store
 
 #------------------------------------------

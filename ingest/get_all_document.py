@@ -1,7 +1,5 @@
-from pathlib import Path
 from datetime import datetime
-from utils.logger import get_logger
-from utils.config import settings
+from api.config import settings
 
 
 def get_document_information(document_name: str):

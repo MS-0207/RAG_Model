@@ -1,6 +1,6 @@
 from datetime import datetime
 from pathlib import Path
-from utils.config import settings
+from api.config import settings
 from fastapi import APIRouter
 from pydantic import BaseModel
 

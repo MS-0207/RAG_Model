@@ -1,6 +1,5 @@
-from pathlib import Path
 from datetime import datetime
-from utils.config import settings
+from api.config import settings
 
 def get_all_documents():
 

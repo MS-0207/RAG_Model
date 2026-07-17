@@ -1,5 +1,4 @@
-from pathlib import Path
-from utils.config import settings
+from api.config import settings
 
 
 def delete_document_from_storage(document_name: str):

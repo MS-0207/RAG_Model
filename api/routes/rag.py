@@ -17,6 +17,7 @@ from retrieval.BM25 import (
 )
 from utils.logger import get_logger
 from fastapi import Request
+from api.dependencies import get_vector_store, verify_api_key
 
 
 logger = get_logger(__name__)
@@ -107,14 +108,20 @@ def build_retrieval_response(
     response_model=dict[str, Any],
 )
 def ask(
-    http_request: Request,              # <-- Added
+    http_request: Request,
     request: QueryRequest,
     api_key: str = Depends(verify_api_key),
     db: FAISS = Depends(get_vector_store),
 ):
+    request_id = getattr(
+        http_request.state,
+        "request_id",
+        "unknown",
+    )
+
     logger.info(
         "Processing request_id=%s",
-        http_request.state.request_id,
+        request_id,
     )
 
     return run_rag_pipeline(

@@ -4,24 +4,22 @@ from langchain_core.documents import Document
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
 from rank_bm25 import BM25Okapi
-from dotenv import load_dotenv
-from api.exception import VectorStoreNotFoundError
 # from utils.config import VECTOR_STORE_DIR
 # from utils.config import OPENAI_API_KEY
-from utils.config import settings
+from api.config import settings
 from pathlib import Path
 from api.exception import VectorStoreNotFoundError
 
 def load_vector_store():
     embeddings = OpenAIEmbeddings()
 
-    if not Path(settings.VECTOR_STORE_DIR).exists():
+    if not Path(settings.vector_store_dir).exists():
         raise VectorStoreNotFoundError(
             "Vector database not found. Please run /documents/ingest first."
         )
 
     db = FAISS.load_local(
-        settings.VECTOR_STORE_DIR,
+        settings.vector_store_dir,
         embeddings,
         allow_dangerous_deserialization=True
     )

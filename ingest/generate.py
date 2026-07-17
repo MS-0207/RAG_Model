@@ -2,7 +2,6 @@ from pathlib import Path
 from langchain_core.documents import Document
 from langchain_community.vectorstores import FAISS
 from langchain_openai import OpenAIEmbeddings
-from utils.config import settings
 from utils.logger import get_logger
 
 logger = get_logger(__name__)

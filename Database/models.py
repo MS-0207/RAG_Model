@@ -7,7 +7,7 @@ from Database.connection import Base
 
 
 class Feedback(Base):
-    __tablename__ = "feedback"
+    __tablename__ = "feedback_1"
 
     id: Mapped[int] = mapped_column(
         primary_key=True,
