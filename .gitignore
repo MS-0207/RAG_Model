@@ -1,32 +1,119 @@
-# created by virtualenv automatically
-RAG/.venv/Lib
-# Virtual Environment
-.venv/
-
-# Environment variables
+# ============================================================
+# Secrets and environment configuration
+# ============================================================
 .env
+.env.*
+!.env.example
 
-# PyCharm
-.idea/
+# ============================================================
+# Python virtual environments
+# ============================================================
+.venv/
+venv/
+env/
+ENV/
 
-# Python cache
+# ============================================================
+# Python-generated files
+# ============================================================
 __pycache__/
 *.py[cod]
+*$py.class
 
-# Distribution / build
+# ============================================================
+# Pytest, coverage, Ruff and MyPy cache
+# ============================================================
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+pytestdebug.log
+
+.mypy_cache/
+.ruff_cache/
+.pytype/
+.pyre/
+
+# ============================================================
+# IDE/editor files
+# ============================================================
+.idea/
+.vscode/
+*.code-workspace
+
+# ============================================================
+# Logs
+# ============================================================
+*.log
+logs/
+
+# This specifically ignores:
+# retrieval/rag.log
+
+# ============================================================
+# Operating-system files
+# ============================================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ============================================================
+# Build and packaging output
+# ============================================================
 build/
 dist/
 *.egg-info/
+.eggs/
+wheels/
 
-# Logs
-*.log
+# ============================================================
+# Temporary files
+# ============================================================
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+~$*
 
-# OS files
-.DS_Store
-Thumbs.db
-
-# Jupyter
-.ipynb_checkpoints/
-
-# SQLite databases
+# ============================================================
+# Local databases
+# ============================================================
 *.db
+*.sqlite
+*.sqlite3
+
+# ============================================================
+# Generated RAG processed chunks
+# ============================================================
+data/processed/*
+
+# Keep the directory in Git even when empty
+!data/processed/.gitkeep
+
+# ============================================================
+# Generated FAISS/vector-store files
+# ============================================================
+embeddings/cache/*
+
+# Keep the directory in Git even when empty
+!embeddings/cache/.gitkeep
+
+# ============================================================
+# Celery runtime files
+# ============================================================
+celerybeat-schedule
+celerybeat.pid
+
+# ============================================================
+# Alembic generated Python caches only
+# Do not ignore migration scripts
+# ============================================================
+alembic/**/__pycache__/
+
+# ============================================================
+# Docker local overrides
+# ============================================================
+compose.override.yaml
+docker-compose.override.yml

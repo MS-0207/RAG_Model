@@ -1,7 +1,0 @@
-Putting it all together with the parallel input matrix X The function computed
-in parallel by an entire layer of N transformer block over the entire N input tokens
-can be expressed as:
-O = X + MultiHeadAttention(LayerNorm(X)) (9.37)
-H = O + FFN(LayerNorm(O)) (9.38)
-Note that in Eq. 9.37 we are using X to mean the input to the layer, wherever it
-comes from. For the ﬁrst layer, as we will see in the next section, that input is the

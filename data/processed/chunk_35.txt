@@ -1,6 +1,0 @@
-to attention xi and the output from attention ai both have the same dimensionality
-[1× d]. We often call d the model dimensionality, and indeed as we’ll discuss in
-Section 9.2 the output hi of each transformer block, as well as the intermediate vec-
-tors inside the transformer block also have the same dimensionality [1× d]. Having
-everything be the same dimensionality makes the transformer very modular.
-So let’s talk shapes. How do we get from [1× d] at the input to [1× d] at the

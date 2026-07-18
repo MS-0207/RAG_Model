@@ -1,7 +1,0 @@
-9.2 • T RANSFORMER BLOCKS 9
-and layer norm computations in the context of processing a single input xi at token
-position i.
-Feedforward layer The feedforward layer is a fully-connected 2-layer network,
-i.e., one hidden layer, two weight matrices, as introduced in Chapter 7. The weights
-are the same for each token position i , but are different from layer to layer. It
-is common to make the dimensionality dff of the hidden layer of the feedforward

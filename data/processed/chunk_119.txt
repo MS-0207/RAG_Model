@@ -1,9 +1,0 @@
-End-to-end memory networks. NeurIPS.
-Uszkoreit, J. 2017. Transformer: A novel neural network ar-
-chitecture for language understanding. Google Research
-blog post, Thursday August 31, 2017.
-Vaswani, A., N. Shazeer, N. Parmar, J. Uszkoreit, L. Jones,
-A. N. Gomez, Ł. Kaiser, and I. Polosukhin. 2017. Atten-
-tion is all you need. NeurIPS.
-Weston, J., S. Chopra, and A. Bordes. 2015. Memory net-
-works. ICLR 2015.

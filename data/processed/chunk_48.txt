@@ -1,6 +1,0 @@
-xi. And then this summed vector is again passed through another layer norm and a
-feedforward layer, and the output of those is added back into the residual, and we’ll
-use hi to refer to the resulting output of the transformer block for token i. (In earlier
-descriptions the residual stream was often described using a different metaphor as
-residual connections that add the input of a component to its output, but the residual
-stream is a more perspicuous way of visualizing the transformer.)

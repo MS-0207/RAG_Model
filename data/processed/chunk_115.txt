@@ -1,4 +1,0 @@
-write memory to networks, by using an embedding of a query to match keys rep-
-resenting content in an associative memory (Sukhbaatar et al., 2015; Weston et al.,
-2015; Graves et al., 2014).
-MORE HISTORY TBD IN NEXT DRAFT.

@@ -1,7 +1,0 @@
-the prior layer is passed up to the next layer, with the output of different com-
-ponents added to it. These components include a multi-head attention layer
-followed by a feedforward layer, each preceded by layer normalizations.
-Transformer blocks are stacked to make deeper and more powerful networks.
-• The input to a transformer is computed by adding an embedding (computed
-with an embedding matrix) to a positional encoding that represents the se-
-quential position of the token in the window.

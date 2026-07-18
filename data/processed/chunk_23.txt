@@ -1,9 +1,0 @@
-Simpliﬁed version: ai =
-∑
-j≤i
-αi jx j (9.6)
-Each αi j is a scalar used for weighing the value of input x j when summing up
-the inputs to compute ai. How shall we compute this α weighting? In attention we
-weight each prior embedding proportionally to howsimilar it is to the current token
-i. So the output of attention is a sum of the embeddings of prior tokens weighted
-by their similarity with the current token embedding. We compute similarity scores

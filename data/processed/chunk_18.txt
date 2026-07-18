@@ -1,5 +1,0 @@
-chicken and road both have a high attention weight, meaning that as we are com-
-puting the representation for it, we will draw most heavily on the representation for
-chicken and road. This will be useful in building the ﬁnal representation for it,
-since it will end up coreferring with either chicken or road.
-Let’s now turn to how this attention distribution is represented and computed.

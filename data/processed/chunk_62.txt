@@ -1,6 +1,0 @@
-9.3 • P ARALLELIZING COMPUTATION USING A SINGLE MATRIX X 11
-9.3 Parallelizing computation using a single matrix X
-This description of multi-head attention and the rest of the transformer block has
-been from the perspective of computing a single output at a single time step i in
-a single residual stream. But as we pointed out earlier, the attention computation
-performed for each token to compute ai is independent of the computation for each

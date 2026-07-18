@@ -1,6 +1,0 @@
-the rest of the transformer block, and the input encoding and language modeling
-head components. Chapter 10 discusses how language models are pretrained, and
-how tokens are generated via sampling. Chapter 11 introduces masked language
-modeling and the BERT family of bidirectional transformer encoder models. Chap-
-ter 12 shows how toprompt LLMs to perform NLP tasks by giving instructions and
-demonstrations, and how to align the model with human preferences. Chapter 13

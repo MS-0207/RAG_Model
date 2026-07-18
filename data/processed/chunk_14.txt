@@ -1,7 +1,0 @@
-embeddings
-transformer, layer by layer, we build up richer and richer contextualized representa-
-tions of the meanings of input tokens. At each layer, we compute the representation
-of a token i by combining information about i from the previous layer with infor-
-mation about the neighboring tokens to produce a contextualized representation for
-each word at each position.
-Attention is the mechanism in the transformer that weighs and combines the

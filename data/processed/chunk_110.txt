@@ -1,7 +1,0 @@
-BIBLIOGRAPHICAL AND HISTORICAL NOTES 19
-Here’s a summary of the main points that we covered:
-• Transformers are non-recurrent networks based on multi-head attention, a
-kind of self-attention. A multi-head attention computation takes an input
-vector xi and maps it to an output ai by adding in vectors from prior tokens,
-weighted by how relevant they are for the processing of the current word.
-• A transformer block consists of a residual stream in which the input from

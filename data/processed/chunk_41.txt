@@ -1,9 +1,0 @@
-j (9.18)
-ai = ( head1⊕ head2...⊕ headA)WO (9.19)
-MultiHeadAttention(xi, [x1,··· , xN]) = ai (9.20)
-The output of each of the A heads is of shape 1× dv, and so the output of the
-multi-head layer with A heads consists of A vectors of shape 1 × dv. These are
-concatenated to produce a single output with dimensionality 1× hdv. Then we use
-yet another linear projection WO∈ RAdv×d to reshape it, resulting in the multi-head
-attention vector ai with the correct output shape [1× d] at each input i.
-ai

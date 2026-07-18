@@ -1,6 +1,0 @@
-a vector embedding representation for each token in the input. We’ve reduced the
-entire self-attention step for an entire sequence of N tokens for one head to the
-architecture. The original deﬁnition of the transformer in Vaswani et al. (2017) used an alternative archi-
-tecture called the postnorm transformer in which the layer norm happens after the attention and FFN
-layers; it turns out moving the layer norm beforehand works better, but does require this one extra layer
-at the end.

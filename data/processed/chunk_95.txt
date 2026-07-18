@@ -1,7 +1,0 @@
-the feedforward and RNN language models of Chapter 7 and Chapter 8, are word
-predictors. Given a context of words, they assign a probability to each possible next
-word. For example, if the preceding context is “Thanks for all the” and we want to
-know how likely the next word is “ﬁsh” we would compute:
-P(ﬁsh|Thanks for all the)
-Language models give us the ability to assign such a conditional probability to every
-possible next word, giving us a distribution over the entire vocabulary. The n-gram

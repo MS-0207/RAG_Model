@@ -1,6 +1,0 @@
-models stack many of these blocks, from 12 layers (used for the T5 or GPT-3-small
-language models) to 96 layers (used for GPT-3 large), to even more for more recent
-models. We’ll come back to this issue of stacking in a bit.
-Equation 9.28 and following are just the equation for a single transformer block,
-but the residual stream metaphor goes through all the transformer layers, from the
-ﬁrst transformer blocks to the 12th, in a 12-layer transformer. At the earlier trans-

@@ -1,6 +1,0 @@
-via dot product, which maps two vectors into a scalar value ranging from −∞ to
-∞. The larger the score, the more similar the vectors that are being compared. We’ll
-normalize these scores with a softmax to create the vector of weights αi j, j≤ i.
-Simpliﬁed Version: score(xi, x j) = xi· x j (9.7)
-αi j = softmax(score(xi, x j))∀ j≤ i (9.8)
-Thus in Fig. 9.3 we computea3 by computing three scores: x3· x1, x3· x2 and x3· x3,

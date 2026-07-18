@@ -1,6 +1,0 @@
-In causal, left-to-right language models, the context is any of the prior words.
-That is, when processing xi, the model has access to xi as well as the representations
-of all the prior tokens in the context window (context windows consist of thousands
-of tokens) but no tokens afteri. (By contrast, in Chapter 11 we’ll generalize attention
-so it can also look ahead to future words.)
-Fig. 9.3 illustrates this ﬂow of information in an entire causal self-attention layer,

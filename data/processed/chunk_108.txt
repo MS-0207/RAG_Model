@@ -1,8 +1,0 @@
-only model. This is because this model constitutes roughly half of the encoder-decoder-only
-model
-decoder model for transformers that we’ll see how to apply to machine translation
-in Chapter 13. (Confusingly, the original introduction of the transformer had an
-encoder-decoder architecture, and it was only later that the standard paradigm for
-causal language model was deﬁned by using only the decoder part of this original
-architecture).
-9.6 Summary

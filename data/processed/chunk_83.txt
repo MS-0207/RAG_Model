@@ -1,6 +1,0 @@
-role depending on the kind of language model we are building.) The set of initial
-embeddings are stored in the embedding matrix E, which has a row for each of the
-|V| tokens in the vocabulary. Thus each word is a row vector of d dimensions, and
-E has shape [|V|× d].
-Given an input token string like Thanks for all the we ﬁrst convert the tokens
-into vocabulary indices (these were created when we ﬁrst tokenized the input using

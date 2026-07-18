@@ -1,6 +1,0 @@
-and mapping from an input token wi to to a predicted next token wi+1.
-the model. Since the network wasn’t trained to make the internal representations
-function in this way, the logit lens doesn’t always work perfectly, but this can still
-be a useful trick.
-A terminological note before we conclude: You will sometimes see a trans-
-former used for this kind of unidirectional causal language model called a decoder-

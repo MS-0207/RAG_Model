@@ -1,6 +1,0 @@
-other token, and that’s also true for all the computation in the transformer block
-computing hi from the input xi. That means we can easily parallelize the entire
-computation, taking advantage of efﬁcient matrix multiplication routines.
-We do this by packing the input embeddings for the N tokens of the input se-
-quence into a single matrix X of size [N× d]. Each row of X is the embedding of
-one token of the input. Transformers for large language models commonly have an

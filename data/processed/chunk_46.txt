@@ -1,6 +1,0 @@
-ual stream viewpoint, we consider the processing of an individual token i through
-the transformer block as a single stream of d-dimensional representations for token
-position i. This residual stream starts with the original input vector, and the various
-components read their input from the residual stream and add their output back into
-the stream.
-The input at the bottom of the stream is an embedding for a token, which has

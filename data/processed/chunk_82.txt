@@ -1,6 +1,0 @@
-each word in the context. The transformer does this by separately computing two
-embeddings: an input token embedding, and an input positional embedding.
-A token embedding, introduced in Chapter 7 and Chapter 8, is a vector of di-
-mension d that will be our initial representation for the input token. (As we pass
-vectors up through the transformer layers in the residual stream, this embedding
-representation will change and grow, incorporating context and playing a different

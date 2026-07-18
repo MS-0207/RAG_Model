@@ -1,6 +1,0 @@
-input length N from 1K to 32K; much longer contexts of 128K or even up to millions
-of tokens can also be achieved with architectural changes like special long-context
-mechanisms that we don’t discuss here. So for vanilla transformers, we can think of
-X having between 1K and 32K rows, each of the dimensionality of the embedding
-d (the model dimension).
-Parallelizing attention Let’s ﬁrst see this for a single attention head and then turn

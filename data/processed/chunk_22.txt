@@ -1,9 +1,0 @@
-Simpliﬁed version of attention At its heart, attention is really just a weighted
-sum of context vectors, with a lot of complications added to how the weights are
-computed and what gets summed. For pedagogical purposes let’s ﬁrst describe a
-simpliﬁed intuition of attention, in which the attention output ai at token position i
-is simply the weighted sum of all the representations x j, for all j≤ i; we’ll use αi j
-to mean how much x j should contribute to ai:
-Simpliﬁed version: ai =
-∑
-j≤i

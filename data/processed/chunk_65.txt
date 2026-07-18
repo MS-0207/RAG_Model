@@ -1,7 +1,0 @@
-to multiple heads, and then add in the rest of the components in the transformer
-block. For one head we multiply X by the key, query, and value matrices WQ of
-shape [d×dk], WK of shape [d×dk], and WV of shape [d×dv], to produce matrices
-Q of shape [N× dk], K of shape [N× dk], and V of shape [N× dv], containing all the
-key, query, and value vectors:
-Q = XWQ; K = XWK; V = XWV (9.32)
-Given these matrices we can compute all the requisite query-key comparisons simul-

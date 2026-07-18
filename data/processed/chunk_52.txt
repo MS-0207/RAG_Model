@@ -1,6 +1,0 @@
-facilitates gradient-based training.
-Layer norm is a variation of the z-score from statistics, applied to a single vec-
-tor in a hidden layer. That is, the term layer norm is a bit confusing; layer norm
-is not applied to an entire transformer layer, but just to the embedding vector of a
-single token. Thus the input to layer norm is a single vector of dimensionality d
-and the output is that vector normalized, again of dimensionality d. The ﬁrst step in

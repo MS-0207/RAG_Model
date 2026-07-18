@@ -1,1 +1,0 @@
-are concatenated and then projected down to d, thus producing an output of the same size as the input.

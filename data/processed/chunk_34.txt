@@ -1,9 +1,0 @@
-[1 × dv] [1 × dv] [1 x dv]
-7. Reshape to [1 x d] 
-[1 × d] [1 × d]
-Figure 9.4 Calculating the value of a3, the third element of a sequence using causal (left-
-to-right) self-attention.
-We illustrate this in Fig. 9.4 for the case of calculating the value of the third output
-a3 in a sequence.
-Note that we’ve also introduced one more matrix,WO, which is right-multiplied
-by the attention head. This is necessary to reshape the output of the head. The input

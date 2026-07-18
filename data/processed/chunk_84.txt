@@ -1,6 +1,0 @@
-BPE or SentencePiece). So the representation of thanks for all the might be w =
-[5,4000,10532,2224]. Next we use indexing to select the corresponding rows from
-E, (row 5, row 4000, row 10532, row 2224).
-Another way to think about selecting token embeddings from the embedding
-matrix is to represent tokens as one-hot vectors of shape [1×| V|], i.e., with one
-dimension for each word in the vocabulary. Recall that in a one-hot vector all theone-hot vector

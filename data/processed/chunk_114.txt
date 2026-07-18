@@ -1,6 +1,0 @@
-for MT. This idea was extended to self-attention by dropping the need for separate
-encoding and decoding sequences and instead seeing attention as a way of weighting
-the tokens in collecting information passed from lower layers to higher layers (Ling
-et al., 2015; Cheng et al., 2016; Liu et al., 2016).
-Other aspects of the transformer, including the terminology of key, query, and
-value, came from memory networks, a mechanism for adding an external read-

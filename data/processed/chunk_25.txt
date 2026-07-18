@@ -1,2 +1,0 @@
-normalizing them by a softmax, and using the resulting probabilities as weights
-indicating each of their proportional relevance to the current position i. Of course,

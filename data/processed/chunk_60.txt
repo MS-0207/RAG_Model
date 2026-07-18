@@ -1,6 +1,0 @@
-former blocks, the residual stream is representing the current token. At the highest
-transformer blocks, the residual stream is usually representing the following token,
-since at the very end it’s being trained to predict the next token.
-Once we stack many blocks, there is one more requirement: at the very end of
-the last (highest) transformer block, there is a single extra layer norm that is run on
-the last hi of each token stream (just below the language model head layer that we
