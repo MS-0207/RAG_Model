@@ -1,13 +1,15 @@
-from fastapi import APIRouter
-from pydantic import BaseModel, Field
-
 from ingest.loader import load_all_documents
+from fastapi import APIRouter, Depends
+from pydantic import BaseModel, Field
+from sqlalchemy.orm import Session
+from Database.db_dependecies import get_db
+from Database.models import Feedback
+
 
 router = APIRouter(
     prefix="/feedback",
     tags=["Feedback"]
 )
-
 
 # -------------------------
 # Request Models
@@ -23,6 +25,7 @@ class LoginRequest(BaseModel):
     username: str = Field(..., min_length=1)
     password: str = Field(..., min_length=1)
 
+
 # -------------------------
 # Response Models
 # -------------------------
@@ -30,7 +33,7 @@ class LoginRequest(BaseModel):
 class FeedbackResponse(BaseModel):
     status: str
     message: str
-    comment: str
+    feedback_id: int
 
 
 class LoginResponse(BaseModel):
@@ -43,20 +46,33 @@ class UploadResponse(BaseModel):
     status: str
     documents_loaded: int
 
-
 # -------------------------
 # Endpoints
 # -------------------------
 
-@router.post("", response_model=FeedbackResponse)
-def feedback(request: FeedbackRequest):
-    # Save feedback here
+@router.post(
+    "",
+    response_model=FeedbackResponse,
+)
+def save_feedback(
+    request: FeedbackRequest,
+    db: Session = Depends(get_db),
+) -> FeedbackResponse:
+    feedback = Feedback(
+        query=request.query,
+        rating=request.rating,
+        comment=request.comment,
+    )
+
+    db.add(feedback)
+    db.commit()
+    db.refresh(feedback)
+
     return FeedbackResponse(
         status="success",
         message="Feedback saved successfully",
-        comment="Good",
+        feedback_id=feedback.id,
     )
-
 @router.post("/login", response_model=LoginResponse)
 def login(request: LoginRequest):
     # Authentication logic goes here

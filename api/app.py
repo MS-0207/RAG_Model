@@ -35,7 +35,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 # GZip middleware
 app.add_middleware(
     GZipMiddleware,
@@ -68,4 +67,5 @@ app.include_router(feedback_router)
 
 
 # Create missing database tables
+
 Base.metadata.create_all(bind=engine)

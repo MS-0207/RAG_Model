@@ -1,11 +1,22 @@
 import hashlib
 import json
-from typing import Any
+import logging
 
-from Database.redis_connection import redis_client
+import redis
+from redis.exceptions import RedisError
+
 from api.config import settings
 
+logger = logging.getLogger(__name__)
+
 CACHE_PREFIX = "rag:"
+
+redis_client = redis.Redis(
+    host=settings.redis_host,
+    port=settings.redis_port,
+    db=settings.redis_db,
+    decode_responses=True,
+)
 
 
 def build_cache_key(query: str) -> str:
@@ -17,33 +28,56 @@ def build_cache_key(query: str) -> str:
     return f"{CACHE_PREFIX}{query_hash}"
 
 
-def get_cached_response(query: str) -> dict[str, Any] | None:
-    cache_key = build_cache_key(query)
-    cached_value = redis_client.get(cache_key)
+def get_cached_response(query: str):
+    """
+    Returns cached response or None.
+    If Redis is unavailable, gracefully fall back.
+    """
+    try:
+        key = build_cache_key(query)
+        cached = redis_client.get(key)
 
-    if cached_value is None:
+        if cached is None:
+            return None
+
+        return json.loads(cached)
+
+    except RedisError as exc:
+        logger.warning("Redis unavailable while reading cache: %s", exc)
         return None
 
-    return json.loads(cached_value)
 
+def save_cached_response(query: str, response: dict):
+    """
+    Saves response into Redis.
+    If Redis is unavailable, continue normally.
+    """
+    try:
+        key = build_cache_key(query)
 
-def save_cached_response(
-    query: str,
-    response: dict[str, Any],
-) -> None:
-    cache_key = build_cache_key(query)
+        redis_client.setex(
+            key,
+            settings.redis_ttl,
+            json.dumps(response),
+        )
 
-    redis_client.setex(
-        cache_key,
-        settings.redis_cache_ttl_seconds,
-        json.dumps(response),
-    )
+    except RedisError as exc:
+        logger.warning("Redis unavailable while saving cache: %s", exc)
 
 
 def clear_rag_cache() -> int:
-    keys = list(redis_client.scan_iter(f"{CACHE_PREFIX}*"))
+    """
+    Deletes all RAG cache entries.
+    Returns number deleted.
+    """
+    try:
+        keys = list(redis_client.scan_iter(f"{CACHE_PREFIX}*"))
 
-    if not keys:
+        if not keys:
+            return 0
+
+        return redis_client.delete(*keys)
+
+    except RedisError as exc:
+        logger.warning("Redis unavailable while clearing cache: %s", exc)
         return 0
-
-    return redis_client.delete(*keys)

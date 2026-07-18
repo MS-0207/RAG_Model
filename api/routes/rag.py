@@ -5,9 +5,8 @@ from langchain_community.vectorstores import FAISS
 from langchain_core.documents import Document
 from pydantic import BaseModel, Field
 
-from api.dependencies import get_vector_store, verify_api_key
 from LLM.answer_generator import check_grounding, generate_answer
-from main import run_rag_pipeline
+from api.services.main import run_rag_pipeline
 from reranking.cross_encoder_rank import cross_encoder_rerank
 from retrieval.BM25 import (
     bm25_retrieval,
@@ -18,7 +17,6 @@ from retrieval.BM25 import (
 from utils.logger import get_logger
 from fastapi import Request
 from api.dependencies import get_vector_store, verify_api_key
-
 
 logger = get_logger(__name__)
 router = APIRouter(tags=["RAG"])

@@ -8,8 +8,8 @@ from utils.logger import get_logger
 
 logger = get_logger(__name__)
 
-
 def run_ingestion_pipeline() -> dict:
+
     logger.info("Loading documents...")
     docs = load_all_documents(settings.raw_dir)
     logger.info("Loaded %d documents", len(docs))

@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     api_key: str
     openai_api_key: str
     database_url: str
+    redis_url: str
 
     raw_dir: Path
     processed_dir: Path
@@ -15,7 +16,7 @@ class Settings(BaseSettings):
     redis_host: str = "redis"
     redis_port: int = 6379
     redis_db: int = 0
-    redis_cache_ttl_seconds: int = 3600
+    redis_ttl: int = 3600
 
     model_config = SettingsConfigDict(
         env_file=".env",

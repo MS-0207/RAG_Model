@@ -8,3 +8,5 @@ redis_client = redis.Redis(
     db=settings.redis_db,
     decode_responses=True,
 )
+
+

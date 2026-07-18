@@ -1,3 +1,5 @@
+version: "3.9"
+
 services:
   rag_api:
     build: .
@@ -7,11 +9,29 @@ services:
     env_file:
       - .env
     volumes:
+      - .:/app
       - ./data/raw:/app/data/raw
       - ./data/processed:/app/data/processed
       - ./embeddings/cache:/app/embeddings/cache
     depends_on:
       - redis
+      - postgres
+    restart: unless-stopped
+
+  celery:
+    build: .
+    container_name: rag_celery
+    command: celery -A api.celery_app:celery_app worker --loglevel=info --pool=solo
+    env_file:
+      - .env
+    volumes:
+      - .:/app        #bind mount --directly access window folder from container instead making copy
+      - ./data/raw:/app/data/raw
+      - ./data/processed:/app/data/processed
+      - ./embeddings/cache:/app/embeddings/cache
+    depends_on:
+      - redis
+      - postgres
     restart: unless-stopped
 
   redis:
@@ -20,3 +40,19 @@ services:
     ports:
       - "6379:6379"
     restart: unless-stopped
+
+  postgres:
+    image: postgres:16
+    container_name: rag_postgres
+    environment:
+      POSTGRES_DB: Rag_DB
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Artillary177#
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
