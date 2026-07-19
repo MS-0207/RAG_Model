@@ -13,7 +13,6 @@ from api.routes.documents import router as documents_router
 from api.routes.feedback import router as feedback_router
 from api.routes.health import router as health_router
 from api.routes.rag import router as rag_router
-from Database import models
 from Database.connection import Base, engine
 
 

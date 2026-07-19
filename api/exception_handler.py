@@ -1,7 +1,5 @@
 from fastapi import Request
 from fastapi.responses import JSONResponse
-from fastapi import Request
-from fastapi.responses import JSONResponse
 from api.exception import NoDocumentsFoundError
 
 async def global_exception_handler(

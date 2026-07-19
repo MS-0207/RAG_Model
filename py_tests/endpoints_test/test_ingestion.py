@@ -1,10 +1,12 @@
 from unittest.mock import patch
 from fastapi.testclient import TestClient
 from langchain_core.documents import Document
-from api.app import app
-client = TestClient(app)
 from ingest.pipeline import run_ingestion_pipeline
+from api.app import app
 from api.config import settings
+
+client = TestClient(app)
+
 
 @patch("api.routes.documents.run_ingestion_pipeline")
 def test_ingest_endpoint(mock_run_ingestion_pipeline):

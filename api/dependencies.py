@@ -1,5 +1,7 @@
 from fastapi import Header, HTTPException
 from api.config import settings
+from langchain_community.vectorstores import FAISS
+from retrieval.BM25 import load_vector_store
 
 
 def verify_api_key(x_api_key: str = Header(...)):
@@ -14,9 +16,6 @@ def verify_api_key(x_api_key: str = Header(...)):
 #------------------------------------------
 # Creating Dependencies
 #------------------------------------------
-
-from langchain_community.vectorstores import FAISS
-from retrieval.BM25 import load_vector_store
 
 #------------------------------------------
 # Below function has one job

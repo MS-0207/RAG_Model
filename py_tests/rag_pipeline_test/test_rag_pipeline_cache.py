@@ -1,14 +1,8 @@
 from unittest.mock import MagicMock, patch
 from api.services.main import run_rag_pipeline
-from unittest.mock import patch
 from redis.exceptions import ConnectionError
 from Database.redis_cache import clear_rag_cache
 from Database.redis_cache import save_cached_response
-from unittest.mock import MagicMock, patch
-from redis.exceptions import ConnectionError
-from api.services.main import run_rag_pipeline
-from unittest.mock import patch
-from redis.exceptions import ConnectionError
 from Database.redis_cache import get_cached_response
 
 
