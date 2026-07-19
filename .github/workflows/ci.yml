@@ -22,31 +22,35 @@ jobs:
           EOF
 
       - name: Build containers
-        run: docker compose -f compose.yaml build
+        run: docker compose build
 
-      - name: Start services
-        run: docker compose -f compose.yaml up -d
+      # Static checks do not need PostgreSQL, Redis or the API server running.
+      - name: Run Ruff
+        run: >
+          docker compose run --rm --no-deps rag_api
+          ruff check .
 
       - name: Run MyPy
         run: >
-          docker compose exec -T rag_api
+          docker compose run --rm --no-deps rag_api
           mypy --config-file mypy.ini
           api Database ingest retrieval reranking LLM Response utils
 
-      - name: Show container status
-        run: docker compose -f compose.yaml ps
+      # Start application services only after static checks pass.
+      - name: Start services
+        run: docker compose up -d
 
-      - name: Run Ruff
-        run: docker compose -f compose.yaml exec -T rag_api ruff check .
+      - name: Show container status
+        run: docker compose ps
 
       - name: Run Pytest
-        run: docker compose -f compose.yaml exec -T rag_api pytest
+        run: docker compose exec -T rag_api pytest -v
 
       - name: Show logs on failure
         if: failure()
-        run: docker compose -f compose.yaml logs
+        run: docker compose logs
 
       - name: Stop containers
         if: always()
-        run: docker compose -f compose.yaml down -v
-
+        continue-on-error: true
+        run: docker compose down -v
