@@ -22,16 +22,16 @@ jobs:
           EOF
 
       - name: Build containers
-        run: docker compose -f Compose.yaml build
+        run: docker compose -f compose.yaml build
 
       - name: Start services
-        run: docker compose -f Compose.yaml up -d
+        run: docker compose -f compose.yaml up -d
 
       - name: Show container status
-        run: docker compose -f Compose.yaml ps
+        run: docker compose -f compose.yaml ps
 
       - name: Run Ruff
-        run: docker compose -f Compose.yaml exec -T rag_api ruff check .
+        run: docker compose -f compose.yaml exec -T rag_api ruff check .
 
       - name: Run MyPy
         run: >
@@ -39,13 +39,13 @@ jobs:
           mypy api Database ingest retrieval reranking LLM Response utils
 
       - name: Run Pytest
-        run: docker compose -f Compose.yaml exec -T rag_api pytest
+        run: docker compose -f compose.yaml exec -T rag_api pytest
 
       - name: Show logs on failure
         if: failure()
-        run: docker compose -f Compose.yaml logs
+        run: docker compose -f compose.yaml logs
 
       - name: Stop containers
         if: always()
-        run: docker compose -f Compose.yaml down -v
+        run: docker compose -f compose.yaml down -v
 
