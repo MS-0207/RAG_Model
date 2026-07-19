@@ -37,29 +37,31 @@ jobs:
           mypy --config-file mypy.ini
           api Database ingest retrieval reranking LLM Response utils
 
-      - name: Start services
-        run: docker compose up -d
+      # Start only the services required by tests.
+      # Do not start rag_api or celery here.
+      - name: Start test dependencies
+        run: docker compose up -d postgres redis
 
       - name: Show container status
         run: docker compose ps
 
-      # -------- DEBUG STEP --------
-      - name: Check memory usage
+      - name: Check memory before tests
         run: docker stats --no-stream
-      # ----------------------------
 
+      # Creates a temporary container and overrides the Uvicorn command with pytest.
       - name: Run Pytest
-        run: docker compose exec -T rag_api pytest -v py_tests
+        run: >
+          docker compose run --rm --no-deps
+          rag_api
+          pytest -v py_tests
 
-      # -------- DEBUG STEP --------
-      - name: Show rag_api logs
+      - name: Check memory after tests
         if: always()
-        run: docker compose logs rag_api
-      # ----------------------------
+        run: docker stats --no-stream
 
-      - name: Show all logs on failure
+      - name: Show logs on failure
         if: failure()
-        run: docker compose logs
+        run: docker compose logs postgres redis
 
       - name: Stop containers
         if: always()
