@@ -1,13 +1,13 @@
 from langchain_community.vectorstores import FAISS
-
 from Database.redis_cache import (get_cached_response,save_cached_response,)
 from LLM.answer_generator import check_grounding, generate_answer
 from reranking.cross_encoder_rank import cross_encoder_rerank
-from retrieval.BM25 import (bm25_retrieval,get_all_docs_from_faiss,merge_and_deduplicate,vector_mmr_retrieval,)
+from retrieval.BM25 import (bm25_retrieval,get_all_docs_from_faiss,merge_and_deduplicate,vector_mmr_retrieval)
 from Response.response import build_final_response
 from utils.logger import get_logger
 
 logger = get_logger(__name__)
+
 
 def run_rag_pipeline(
     query: str,
@@ -102,9 +102,7 @@ def run_rag_pipeline(
     # --------------------------------------------------
     sources = list(
         dict.fromkeys(
-            doc.metadata.get("source")
-            for doc in top_docs
-            if doc.metadata.get("source")
+            doc.metadata.get("source") for doc in top_docs if doc.metadata.get("source")
         )
     )
 
@@ -126,8 +124,6 @@ def run_rag_pipeline(
         response=final_response,
     )
 
-    logger.info(
-        "Final RAG response generated and saved to Redis"
-    )
+    logger.info("Final RAG response generated and saved to Redis")
 
     return final_response

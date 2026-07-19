@@ -8,15 +8,16 @@ def build_final_response(
     grounding_result: Dict[str, Any],
     top_docs: List[Document],
 ) -> Dict[str, Any]:
-
     sources = []
     for i, doc in enumerate(top_docs, start=1):
-        sources.append({
-            "source_id": i,
-            "source": doc.metadata.get("source", "unknown"),
-            "page": doc.metadata.get("page", None),
-            "preview": doc.page_content[:250]
-        })
+        sources.append(
+            {
+                "source_id": i,
+                "source": doc.metadata.get("source", "unknown"),
+                "page": doc.metadata.get("page", None),
+                "preview": doc.page_content[:250],
+            }
+        )
 
     verdict = grounding_result.get("verdict", "UNKNOWN")
 
@@ -34,8 +35,7 @@ def build_final_response(
         "confidence": confidence,
         "grounding_verdict": verdict,
         "grounding_explanation": grounding_result.get("explanation", ""),
-        "unsupported_claims": grounding_result.get("unsupported_claims", [])
+        "unsupported_claims": grounding_result.get("unsupported_claims", []),
     }
 
     return final_response
-

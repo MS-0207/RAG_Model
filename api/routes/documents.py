@@ -1,8 +1,6 @@
 from typing import Any
-
 from fastapi import APIRouter, Path
 from pydantic import BaseModel
-
 from api.tasks import run_ingestion_task
 from ingest.delete_document import delete_document_from_storage
 from ingest.document_loader import get_all_documents
@@ -13,7 +11,6 @@ router = APIRouter(
     prefix="/documents",
     tags=["Documents"],
 )
-
 
 class IngestResponse(BaseModel):
     status: str

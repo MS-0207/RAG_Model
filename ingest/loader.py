@@ -5,7 +5,7 @@ from langchain_core.documents import Document
 from langchain_community.document_loaders import (
     PyPDFLoader,
     TextLoader,
-    UnstructuredWordDocumentLoader
+    UnstructuredWordDocumentLoader,
 )
 
 from api.exception import NoDocumentsFoundError
@@ -15,6 +15,7 @@ logger = get_logger(__name__)
 
 SUPPORTED_EXTENSIONS = {".pdf", ".txt", ".docx"}
 
+
 def load_single_file(file_path: Path) -> List[Document]:
     ext = file_path.suffix.lower()
 
@@ -23,6 +24,8 @@ def load_single_file(file_path: Path) -> List[Document]:
         return []
 
     try:
+        loader: PyPDFLoader | TextLoader | UnstructuredWordDocumentLoader
+
         if ext == ".pdf":
             loader = PyPDFLoader(str(file_path))
         elif ext == ".txt":
@@ -38,6 +41,7 @@ def load_single_file(file_path: Path) -> List[Document]:
         logger.exception("Failed to load file: %s", file_path)
         raise
 
+
 def load_all_documents(directory: str | Path) -> List[Document]:
     directory_path = Path(directory)
 
@@ -50,13 +54,11 @@ def load_all_documents(directory: str | Path) -> List[Document]:
         raise NoDocumentsFoundError(
             f"Configured raw document path is not a directory: {directory_path}"
         )
-                            # ----> create nodocumentfounderror object and raise it
 
     supported_files = [
         file_path
         for file_path in directory_path.rglob("*")
-        if file_path.is_file()
-        and file_path.suffix.lower() in SUPPORTED_EXTENSIONS
+        if file_path.is_file() and file_path.suffix.lower() in SUPPORTED_EXTENSIONS
     ]
 
     if not supported_files:

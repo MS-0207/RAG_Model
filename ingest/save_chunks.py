@@ -1,6 +1,6 @@
-
 # End-to-end document ingestion pipeline
 import os
+
 
 def save_chunks(chunks, processed_dir):
     os.makedirs(processed_dir, exist_ok=True)

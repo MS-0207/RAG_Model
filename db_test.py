@@ -3,11 +3,7 @@ from Database.models import Feedback
 
 db = SessionLocal()
 
-feedback = Feedback(
-    query="Hello",
-    rating=5,
-    comment="Inserted from Python"
-)
+feedback = Feedback(query="Hello", rating=5, comment="Inserted from Python")
 
 db.add(feedback)
 db.commit()

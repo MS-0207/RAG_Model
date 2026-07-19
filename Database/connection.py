@@ -6,11 +6,11 @@ from sqlalchemy import create_engine
 # All database communication goes through the Engine.
 
 engine = create_engine(
-    settings.DATABASE_URL,
+    settings.database_url,
     pool_pre_ping=True,
 )
 
-#A Session is a workspace used to interact with the database.
+# A Session is a workspace used to interact with the database.
 # It allows you to query, insert, update, and delete data, and manages transactions.
 # Session is the object you use to perform CRUD operations on the database.
 
@@ -25,8 +25,10 @@ SessionLocal = sessionmaker(
 # Base is the parent class from which all ORM models inherit.
 # It tells SQLAlchemy that these Python classes represent database tables.
 
+
 class Base(DeclarativeBase):
     pass
+
 
 # SQLAlchemy → The library that connects Python to the database.
 # Engine → Creates and manages the database connection.

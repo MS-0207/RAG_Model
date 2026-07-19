@@ -6,8 +6,8 @@ from utils.logger import get_logger
 
 logger = get_logger(__name__)
 
-class RequestLoggingMiddleware(BaseHTTPMiddleware):
 
+class RequestLoggingMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next):
         request_id = str(uuid.uuid4())
         request.state.request_id = request_id

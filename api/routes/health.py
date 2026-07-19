@@ -4,14 +4,13 @@ from api.config import settings
 from fastapi import APIRouter
 from pydantic import BaseModel
 
-router = APIRouter(
-    tags=["System"]
-)
+router = APIRouter(tags=["System"])
 
 
 # -------------------------
 # Response Models
 # -------------------------
+
 
 class HomeResponse(BaseModel):
     message: str
@@ -22,6 +21,7 @@ class HealthResponse(BaseModel):
     service: str
     message: str
     timestamp: str
+
 
 class ReadinessResponse(BaseModel):
     status: str
@@ -43,17 +43,15 @@ class VersionResponse(BaseModel):
 # Endpoints
 # -------------------------
 
-@router.get(
-    "/",
-    response_model=HomeResponse
-)
+
+@router.get("/", response_model=HomeResponse)
 def home() -> HomeResponse:
-    return HomeResponse(
-        message="First RAG API"
-    )
+    return HomeResponse(message="First RAG API")
+
 
 # /health/live answers: Is the API process running?
 # /health/ready answers: Is the RAG service actually ready to handle requests?
+
 
 @router.get("/health/live", response_model=HealthResponse)
 def liveness() -> HealthResponse:
@@ -61,7 +59,7 @@ def liveness() -> HealthResponse:
         status="healthy",
         service="RAG API",
         message="API is running",
-        timestamp=datetime.now().isoformat()
+        timestamp=datetime.now().isoformat(),
     )
 
 
@@ -88,10 +86,8 @@ def readiness() -> ReadinessResponse:
         processed_directory_available=processed_directory_available,
     )
 
-@router.get(
-    "/version",
-    response_model=VersionResponse
-)
+
+@router.get("/version", response_model=VersionResponse)
 def version() -> VersionResponse:
     return VersionResponse(
         status="version",
@@ -99,5 +95,5 @@ def version() -> VersionResponse:
         embed_model="openai_embedding_model",
         llm="openai",
         vector_database="FAISS",
-        version="python.ie"
+        version="python.ie",
     )

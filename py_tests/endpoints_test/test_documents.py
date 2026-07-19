@@ -1,6 +1,7 @@
 from unittest.mock import patch
 from fastapi.testclient import TestClient
 from api.app import app
+
 client = TestClient(app)
 
 
@@ -48,17 +49,18 @@ def test_delete_document(mock_delete_document):
     mock_delete_document.assert_called_once_with("sample.pdf")
 
 
-@patch("api.routes.documents.run_ingestion_pipeline")
-def test_ingest_documents(mock_run_ingestion_pipeline):
-    mock_run_ingestion_pipeline.return_value = {
-        "status": "success"
-    }
+from unittest.mock import patch
+
+@patch("api.routes.documents.run_ingestion_task.delay")
+def test_ingest_documents(mock_delay):
+    mock_delay.return_value.id = "test-task-123"
 
     response = client.post("/documents/ingest")
 
-    assert response.status_code == 200
-    assert response.json()["status"] == "success"
-    assert response.json()["message"] == "Documents ingested successfully"
-
-    mock_run_ingestion_pipeline.assert_called_once()
-
+    assert response.status_code == 202
+    assert response.json() == {
+        "status": "queued",
+        "message": "Document ingestion started in the background.",
+        "task_id": "test-task-123",
+    }
+    mock_delay.assert_called_once_with()

@@ -14,7 +14,6 @@ class Feedback(Base):
         index=True,
     )
 
-
     query: Mapped[str] = mapped_column(
         Text,
         nullable=False,

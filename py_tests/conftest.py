@@ -1,14 +1,12 @@
-import os
-
 import pytest
-from fastapi.testclient import TestClient
-
 from api.app import app
+from fastapi.testclient import TestClient
+from api.config import settings
 
 
 @pytest.fixture
 def client():
-    api_key = os.getenv("API_KEY")
+    api_key = settings.api_key
 
     if not api_key:
         raise RuntimeError("API_KEY is not configured in the test container")

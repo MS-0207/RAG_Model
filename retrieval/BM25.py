@@ -4,11 +4,13 @@ from langchain_core.documents import Document
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
 from rank_bm25 import BM25Okapi
+
 # from utils.config import VECTOR_STORE_DIR
 # from utils.config import OPENAI_API_KEY
 from api.config import settings
 from pathlib import Path
 from api.exception import VectorStoreNotFoundError
+
 
 def load_vector_store():
     embeddings = OpenAIEmbeddings()
@@ -19,29 +21,21 @@ def load_vector_store():
         )
 
     db = FAISS.load_local(
-        settings.vector_store_dir,
-        embeddings,
-        allow_dangerous_deserialization=True
+        settings.vector_store_dir, embeddings, allow_dangerous_deserialization=True
     )
 
     return db
 
+
 def get_all_docs_from_faiss(db) -> List[Document]:
     return list(db.docstore._dict.values())
 
-def bm25_retrieval(
-    query: str,
-    docs: List[Document],
-    top_k: int = 10
-) -> List[Document]:
 
+def bm25_retrieval(query: str, docs: List[Document], top_k: int = 10) -> List[Document]:
     if not docs:
         return []
 
-    tokenized_docs = [
-        doc.page_content.lower().split()
-        for doc in docs
-    ]
+    tokenized_docs = [doc.page_content.lower().split() for doc in docs]
 
     bm25 = BM25Okapi(tokenized_docs)
 
@@ -51,38 +45,24 @@ def bm25_retrieval(
 
     scored_docs = list(zip(docs, scores))
 
-    scored_docs.sort(
-        key=lambda x: x[1],
-        reverse=True
-    )
+    scored_docs.sort(key=lambda x: x[1], reverse=True)
 
-    return [
-        doc for doc, score in scored_docs[:top_k]
-    ]
+    return [doc for doc, score in scored_docs[:top_k]]
 
 
 def vector_mmr_retrieval(
-    query: str,
-    db,
-    top_k: int = 10,
-    fetch_k: int = 30,
-    lambda_mult: float = 0.5
+    query: str, db, top_k: int = 10, fetch_k: int = 30, lambda_mult: float = 0.5
 ) -> List[Document]:
-
     mmr_docs = db.max_marginal_relevance_search(
-        query=query,
-        k=top_k,
-        fetch_k=fetch_k,
-        lambda_mult=lambda_mult
+        query=query, k=top_k, fetch_k=fetch_k, lambda_mult=lambda_mult
     )
 
     return mmr_docs
 
-def merge_and_deduplicate(
-    bm25_docs: List[Document],
-    vector_docs: List[Document]
-) -> List[Document]:
 
+def merge_and_deduplicate(
+    bm25_docs: List[Document], vector_docs: List[Document]
+) -> List[Document]:
     unique_docs = {}
 
     merged_docs = bm25_docs + vector_docs
@@ -104,31 +84,18 @@ def hybrid_retrieval(
     bm25_top_k: int = 10,
     vector_top_k: int = 10,
     fetch_k: int = 30,
-    lambda_mult: float = 0.5
+    lambda_mult: float = 0.5,
 ) -> List[Document]:
-
     db = load_vector_store()
 
     all_docs = get_all_docs_from_faiss(db)
 
-    bm25_docs = bm25_retrieval(
-        query=query,
-        docs=all_docs,
-        top_k=bm25_top_k
-    )
+    bm25_docs = bm25_retrieval(query=query, docs=all_docs, top_k=bm25_top_k)
 
     vector_docs = vector_mmr_retrieval(
-        query=query,
-        db=db,
-        top_k=vector_top_k,
-        fetch_k=fetch_k,
-        lambda_mult=lambda_mult
+        query=query, db=db, top_k=vector_top_k, fetch_k=fetch_k, lambda_mult=lambda_mult
     )
 
-    final_docs = merge_and_deduplicate(
-        bm25_docs=bm25_docs,
-        vector_docs=vector_docs
-    )
+    final_docs = merge_and_deduplicate(bm25_docs=bm25_docs, vector_docs=vector_docs)
 
     return final_docs
-

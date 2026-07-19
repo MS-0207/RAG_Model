@@ -6,6 +6,7 @@ from api.exception import NoDocumentsFoundError
 # 1. Ingest → Query → Verify Answer
 # ============================================================
 
+
 def test_ingest_and_query(client):
     response = client.post(
         "/ask",
@@ -26,6 +27,7 @@ def test_ingest_and_query(client):
 # ============================================================
 # 2. Unknown Question (No Hallucination)
 # ============================================================
+
 
 def test_unknown_question(client):
     response = client.post(
@@ -65,6 +67,7 @@ def test_unknown_question(client):
 # 4. Citation Test
 # ============================================================
 
+
 def test_sources_returned(client):
     response = client.post(
         "/ask",
@@ -83,6 +86,7 @@ def test_sources_returned(client):
 # 5. Grounding Test
 # ============================================================
 
+
 def test_grounding_score(client):
     response = client.post(
         "/ask",
@@ -97,9 +101,11 @@ def test_grounding_score(client):
     assert body["confidence"] in ("HIGH", "MEDIUM")
     assert isinstance(body["unsupported_claims"], list)
 
+
 # ============================================================
 # 6. Cache Test
 # ============================================================
+
 
 def test_cache(client):
     response1 = client.post(
@@ -121,9 +127,11 @@ def test_cache(client):
     assert body1["cache_hit"] is True
     assert body2["cache_hit"] is True
 
+
 # ============================================================
 # 7. Empty Vector Store
 # ============================================================
+
 
 @patch("api.services.main.run_rag_pipeline")
 def test_no_documents(mock_pipeline, client):

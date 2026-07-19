@@ -21,9 +21,7 @@ redis_client = redis.Redis(
 
 def build_cache_key(query: str) -> str:
     normalized_query = " ".join(query.lower().split())
-    query_hash = hashlib.sha256(
-        normalized_query.encode("utf-8")
-    ).hexdigest()
+    query_hash = hashlib.sha256(normalized_query.encode("utf-8")).hexdigest()
 
     return f"{CACHE_PREFIX}{query_hash}"
 

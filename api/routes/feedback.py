@@ -6,14 +6,12 @@ from Database.db_dependecies import get_db
 from Database.models import Feedback
 
 
-router = APIRouter(
-    prefix="/feedback",
-    tags=["Feedback"]
-)
+router = APIRouter(prefix="/feedback", tags=["Feedback"])
 
 # -------------------------
 # Request Models
 # -------------------------
+
 
 class FeedbackRequest(BaseModel):
     query: str = Field(..., min_length=1)
@@ -29,6 +27,7 @@ class LoginRequest(BaseModel):
 # -------------------------
 # Response Models
 # -------------------------
+
 
 class FeedbackResponse(BaseModel):
     status: str
@@ -46,9 +45,11 @@ class UploadResponse(BaseModel):
     status: str
     documents_loaded: int
 
+
 # -------------------------
 # Endpoints
 # -------------------------
+
 
 @router.post(
     "",
@@ -73,6 +74,8 @@ def save_feedback(
         message="Feedback saved successfully",
         feedback_id=feedback.id,
     )
+
+
 @router.post("/login", response_model=LoginResponse)
 def login(request: LoginRequest):
     # Authentication logic goes here

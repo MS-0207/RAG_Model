@@ -66,5 +66,4 @@ app.include_router(feedback_router)
 
 
 # Create missing database tables
-
 Base.metadata.create_all(bind=engine)

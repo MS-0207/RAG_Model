@@ -1,4 +1,3 @@
-
 from Database.connection import SessionLocal
 
 
@@ -8,5 +7,3 @@ def get_db():
         yield db
     finally:
         db.close()
-
-

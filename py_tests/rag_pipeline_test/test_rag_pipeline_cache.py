@@ -27,14 +27,10 @@ def test_run_rag_pipeline_cache_hit(
     )
 
     # Assert
-    assert response["answer"] == (
-        "RAG combines retrieval with generation."
-    )
+    assert response["answer"] == ("RAG combines retrieval with generation.")
     assert response["cache_hit"] is True
 
-    mock_get_cached_response.assert_called_once_with(
-        "What is RAG?"
-    )
+    mock_get_cached_response.assert_called_once_with("What is RAG?")
 
     # The RAG pipeline must not continue after a cache hit
     mock_get_all_docs.assert_not_called()
@@ -76,9 +72,7 @@ def test_run_rag_pipeline_cache_miss(
     mock_merge.return_value = docs
     mock_rerank.return_value = top_docs
 
-    mock_generate.return_value = {
-        "answer": "This is a generated answer."
-    }
+    mock_generate.return_value = {"answer": "This is a generated answer."}
 
     mock_grounding.return_value = {
         "grounded": True,
@@ -106,9 +100,7 @@ def test_run_rag_pipeline_cache_miss(
     assert response["cache_hit"] is False
     assert response["answer"] == "This is a generated answer."
 
-    mock_get_cached_response.assert_called_once_with(
-        "What is RAG?"
-    )
+    mock_get_cached_response.assert_called_once_with("What is RAG?")
 
     mock_get_all_docs.assert_called_once_with(mock_db)
 
@@ -136,9 +128,7 @@ def test_run_rag_pipeline_cache_miss(
 def test_get_cached_response_returns_none_when_redis_fails(
     mock_redis_get,
 ):
-    mock_redis_get.side_effect = ConnectionError(
-        "Redis unavailable"
-    )
+    mock_redis_get.side_effect = ConnectionError("Redis unavailable")
 
     result = get_cached_response("What is RAG?")
 
@@ -149,9 +139,7 @@ def test_get_cached_response_returns_none_when_redis_fails(
 def test_save_cached_response_does_not_crash_when_redis_fails(
     mock_setex,
 ):
-    mock_setex.side_effect = ConnectionError(
-        "Redis unavailable"
-    )
+    mock_setex.side_effect = ConnectionError("Redis unavailable")
 
     response = {
         "query": "What is RAG?",
@@ -171,9 +159,7 @@ def test_save_cached_response_does_not_crash_when_redis_fails(
 def test_clear_rag_cache_returns_zero_when_redis_fails(
     mock_scan_iter,
 ):
-    mock_scan_iter.side_effect = ConnectionError(
-        "Redis unavailable"
-    )
+    mock_scan_iter.side_effect = ConnectionError("Redis unavailable")
 
     result = clear_rag_cache()
 

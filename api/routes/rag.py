@@ -1,19 +1,12 @@
 from typing import Any
-
 from fastapi import APIRouter, Depends
 from langchain_community.vectorstores import FAISS
 from langchain_core.documents import Document
 from pydantic import BaseModel, Field
-
 from LLM.answer_generator import check_grounding, generate_answer
 from api.services.main import run_rag_pipeline
 from reranking.cross_encoder_rank import cross_encoder_rerank
-from retrieval.BM25 import (
-    bm25_retrieval,
-    get_all_docs_from_faiss,
-    merge_and_deduplicate,
-    vector_mmr_retrieval,
-)
+from retrieval.BM25 import (bm25_retrieval,get_all_docs_from_faiss,merge_and_deduplicate,vector_mmr_retrieval,)
 from utils.logger import get_logger
 from fastapi import Request
 from api.dependencies import get_vector_store, verify_api_key
@@ -25,6 +18,7 @@ router = APIRouter(tags=["RAG"])
 # --------------------------------------------------
 # Request models
 # --------------------------------------------------
+
 
 class QueryRequest(BaseModel):
     query: str = Field(
@@ -38,6 +32,7 @@ class QueryRequest(BaseModel):
 # --------------------------------------------------
 # Response models
 # --------------------------------------------------
+
 
 class RetrievedDocument(BaseModel):
     content: str
@@ -79,7 +74,6 @@ def retrieve_documents(
         vector_docs=vector_docs,
     )
 
-
 def build_retrieval_response(
     query: str,
     documents: list[Document],
@@ -100,6 +94,7 @@ def build_retrieval_response(
 # --------------------------------------------------
 # Endpoints
 # --------------------------------------------------
+
 
 @router.post(
     "/ask",
@@ -128,13 +123,32 @@ def ask(
     )
 
 @router.post(
+    "/retrieve",
+    response_model=RetrievalResponse,
+)
+def retrieve(
+    request: QueryRequest,
+    db: FAISS = Depends(get_vector_store),
+) -> RetrievalResponse:
+
+    retrieved_docs = retrieve_documents(
+        query=request.query,
+        db=db,
+    )
+
+    return build_retrieval_response(
+        query=request.query,
+        documents=retrieved_docs,
+    )
+
+@router.post(
     "/rerank",
     response_model=RetrievalResponse,
 )
 def rerank(
     request: QueryRequest,
-    db: FAISS = Depends(get_vector_store),
-) -> RetrievalResponse:
+    db: FAISS = Depends(get_vector_store),) -> RetrievalResponse:
+
     retrieved_docs = retrieve_documents(
         query=request.query,
         db=db,
@@ -160,6 +174,7 @@ def generate(
     request: QueryRequest,
     db: FAISS = Depends(get_vector_store),
 ) -> dict[str, Any]:
+
     retrieved_docs = retrieve_documents(
         query=request.query,
         db=db,
@@ -185,6 +200,7 @@ def grounding(
     request: QueryRequest,
     db: FAISS = Depends(get_vector_store),
 ) -> dict[str, Any]:
+
     retrieved_docs = retrieve_documents(
         query=request.query,
         db=db,

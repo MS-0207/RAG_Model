@@ -8,7 +8,6 @@ def create_feedback(
     rating: int,
     comment: str,
 ) -> Feedback:
-
     feedback = Feedback(
         query=query,
         rating=rating,

@@ -6,24 +6,21 @@ from retrieval.BM25 import load_vector_store
 
 def verify_api_key(x_api_key: str = Header(...)):
     if x_api_key != settings.api_key:
-        raise HTTPException(
-            status_code=401,
-            detail="Invalid API Key"
-        )
+        raise HTTPException(status_code=401, detail="Invalid API Key")
 
     return x_api_key
 
-#------------------------------------------
-# Creating Dependencies
-#------------------------------------------
 
-#------------------------------------------
+# ------------------------------------------
+# Creating Dependencies
+# ------------------------------------------
+
+# ------------------------------------------
 # Below function has one job
 # get_vector_store()    ↓
 # load and return the FAISS vector store
-#-------------------------------------------
+# -------------------------------------------
+
 
 def get_vector_store() -> FAISS:
     return load_vector_store()
-
-
