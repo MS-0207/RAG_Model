@@ -19,6 +19,16 @@ jobs:
           REDIS_URL=redis://redis:6379/0
           API_KEY=test-api-key
           OPENAI_API_KEY=test-key
+          
+          RAW_DIR = /app/data/raw
+          PROCESSED_DIR = /app/data/processed
+          VECTOR_STORE_DIR = /app/embeddings/cache
+          
+          REDIS_HOST=redis
+          REDIS_PORT=6379
+          REDIS_DB=0
+          REDIS_TTL=3600
+          
           EOF
 
       - name: Build containers
