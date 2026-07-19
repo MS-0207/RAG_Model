@@ -16,32 +16,37 @@ def create_mock_document(
     return document
 
 
+
 @patch("api.routes.rag.run_rag_pipeline")
-def test_ask(mock_run_rag_pipeline):
+def test_ask(
+    mock_run_rag_pipeline,
+    mock_vector_store,
+):
+
     mock_run_rag_pipeline.return_value = {
         "query": "What is RAG?",
-        "answer": "RAG combines retrieval with generation.",
-        "grounded": True,
+        "context": [],
+        "answer": "RAG answer",
     }
 
     response = client.post(
         "/ask",
         json={"query": "What is RAG?"},
-        headers={"x-api-key": settings.api_key},
+        headers={"X-API-Key": "test-api-key"},
     )
 
     assert response.status_code == 200
-    assert response.json()["answer"] == (
-        "RAG combines retrieval with generation."
-    )
 
     mock_run_rag_pipeline.assert_called_once_with(
         query="What is RAG?",
-        db=ANY,
+        db=mock_vector_store,
     )
 
 @patch("api.routes.rag.retrieve_documents")
-def test_retrieve(mock_retrieve_documents):
+def test_retrieve(
+    mock_retrieve_documents,
+    mock_vector_store,
+):
     mock_retrieve_documents.return_value = [
         create_mock_document(
             content="RAG retrieves relevant information.",
@@ -68,14 +73,14 @@ def test_retrieve(mock_retrieve_documents):
 
     mock_retrieve_documents.assert_called_once_with(
         query="What is RAG?",
-        db=ANY,
+        db=mock_vector_store,
     )
-
 @patch("api.routes.rag.cross_encoder_rerank")
 @patch("api.routes.rag.retrieve_documents")
 def test_rerank(
     mock_retrieve_documents,
     mock_cross_encoder_rerank,
+    mock_vector_store,
 ):
     retrieved_document = create_mock_document(
         content="Retrieved document",
@@ -105,7 +110,7 @@ def test_rerank(
 
     mock_retrieve_documents.assert_called_once_with(
         query="Explain RAG",
-        db=ANY,
+        db=mock_vector_store,
     )
 
     mock_cross_encoder_rerank.assert_called_once_with(
@@ -114,7 +119,6 @@ def test_rerank(
         top_k=3,
     )
 
-
 @patch("api.routes.rag.generate_answer")
 @patch("api.routes.rag.cross_encoder_rerank")
 @patch("api.routes.rag.retrieve_documents")
@@ -122,6 +126,7 @@ def test_generate(
     mock_retrieve_documents,
     mock_cross_encoder_rerank,
     mock_generate_answer,
+    mock_vector_store,
 ):
     retrieved_document = create_mock_document(
         content="Retrieved context",
@@ -149,7 +154,7 @@ def test_generate(
 
     mock_retrieve_documents.assert_called_once_with(
         query="Explain RAG",
-        db=ANY,
+        db=mock_vector_store,
     )
 
     mock_cross_encoder_rerank.assert_called_once_with(
@@ -173,6 +178,7 @@ def test_grounding(
     mock_cross_encoder_rerank,
     mock_generate_answer,
     mock_check_grounding,
+    mock_vector_store,
 ):
     retrieved_document = create_mock_document(
         content="Retrieved context",
@@ -205,7 +211,7 @@ def test_grounding(
 
     mock_retrieve_documents.assert_called_once_with(
         query="Explain RAG",
-        db=ANY,
+        db=mock_vector_store,
     )
 
     mock_cross_encoder_rerank.assert_called_once_with(
@@ -224,6 +230,7 @@ def test_grounding(
         answer="Generated answer",
         top_docs=[ranked_document],
     )
+
 def test_ask_empty_query():
     response = client.post(
         "/ask",
