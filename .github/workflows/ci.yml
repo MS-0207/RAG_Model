@@ -1,12 +1,8 @@
-name: RAG CI
+name: CI
 
 on:
   push:
-    branches:
-      - main
   pull_request:
-    branches:
-      - main
 
 jobs:
   test:
@@ -16,22 +12,37 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.13"
-          cache: "pip"
-
-      - name: Install dependencies
+      - name: Create environment file
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          cat <<EOF > .env
+          DATABASE_URL=postgresql+psycopg://postgres:postgres@postgres:5432/Rag_DB
+          REDIS_URL=redis://redis:6379/0
+          API_KEY=test-api-key
+          OPENAI_API_KEY=test-key
+          EOF
+
+      - name: Build containers
+        run: docker compose build
+
+      - name: Start services
+        run: docker compose up -d
+
+      - name: Show container status
+        run: docker compose ps
 
       - name: Run Ruff
-        run: ruff check .
+        run: docker compose exec -T rag_api ruff check .
 
       - name: Run MyPy
-        run: mypy .
+        run: docker compose exec -T rag_api mypy .
 
-      - name: Run Tests
-        run: pytest -v
+      - name: Run Pytest
+        run: docker compose exec -T rag_api pytest
+
+      - name: Show logs on failure
+        if: failure()
+        run: docker compose logs
+
+      - name: Stop containers
+        if: always()
+        run: docker compose down -v
