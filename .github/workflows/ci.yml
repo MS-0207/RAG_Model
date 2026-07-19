@@ -63,7 +63,7 @@ jobs:
         run: >
           docker compose run --rm --no-deps
           rag_api
-          pytest -v py_tests
+          pytest -vv -x --tb=long py_tests
 
       - name: Check memory after tests
         if: always()
