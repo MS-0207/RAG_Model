@@ -1,6 +1,6 @@
-from unittest.mock import patch
 from fastapi.testclient import TestClient
 from api.app import app
+from unittest.mock import patch
 
 client = TestClient(app)
 
@@ -49,7 +49,6 @@ def test_delete_document(mock_delete_document):
     mock_delete_document.assert_called_once_with("sample.pdf")
 
 
-from unittest.mock import patch
 
 @patch("api.routes.documents.run_ingestion_task.delay")
 def test_ingest_documents(mock_delay):

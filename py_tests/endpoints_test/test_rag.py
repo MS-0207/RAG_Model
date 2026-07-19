@@ -1,4 +1,4 @@
-from unittest.mock import MagicMock, patch
+from unittest.mock import (MagicMock, patch, ANY)
 from fastapi.testclient import TestClient
 from api.app import app
 from api.config import settings
@@ -14,8 +14,6 @@ def create_mock_document(
     document.page_content = content
     document.metadata = {"source": source}
     return document
-
-from unittest.mock import ANY, patch
 
 
 @patch("api.routes.rag.run_rag_pipeline")
@@ -41,9 +39,6 @@ def test_ask(mock_run_rag_pipeline):
         query="What is RAG?",
         db=ANY,
     )
-
-from unittest.mock import ANY, patch
-
 
 @patch("api.routes.rag.retrieve_documents")
 def test_retrieve(mock_retrieve_documents):
@@ -75,8 +70,6 @@ def test_retrieve(mock_retrieve_documents):
         query="What is RAG?",
         db=ANY,
     )
-from unittest.mock import ANY, patch
-
 
 @patch("api.routes.rag.cross_encoder_rerank")
 @patch("api.routes.rag.retrieve_documents")
@@ -120,8 +113,6 @@ def test_rerank(
         docs=[retrieved_document],
         top_k=3,
     )
-
-from unittest.mock import ANY, patch
 
 
 @patch("api.routes.rag.generate_answer")

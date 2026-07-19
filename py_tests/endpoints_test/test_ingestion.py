@@ -8,9 +8,6 @@ from api.config import settings
 client = TestClient(app)
 
 
-from unittest.mock import patch
-
-
 @patch("api.routes.documents.run_ingestion_task.delay")
 def test_ingest_endpoint(mock_delay):
     mock_delay.return_value.id = "test-task-123"
