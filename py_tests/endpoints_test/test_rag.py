@@ -231,17 +231,16 @@ def test_grounding(
         top_docs=[ranked_document],
     )
 
-def test_ask_empty_query():
+def test_ask_empty_query(mock_vector_store):
     response = client.post(
         "/ask",
-        json={"query": "",},
-        headers={"x-api-key": settings.api_key,},
+        json={"query": ""},
+        headers={"x-api-key": settings.api_key},
     )
 
     assert response.status_code == 422
 
-
-def test_ask_invalid_api_key():
+def test_ask_invalid_api_key(mock_vector_store):
     response = client.post(
         "/ask",
         json={
