@@ -15,7 +15,7 @@ jobs:
       - name: Create environment file
         run: |
           cat <<EOF > .env
-          DATABASE_URL=postgresql+psycopg://postgres:postgres@postgres:5432/Rag_DB
+          DATABASE_URL=postgresql+psycopg://postgres:Artillary177%23@postgres:5432/Rag_DB
           REDIS_URL=redis://redis:6379/0
           API_KEY=test-api-key
           OPENAI_API_KEY=test-key
@@ -24,29 +24,40 @@ jobs:
       - name: Build containers
         run: docker compose build
 
-      # Static checks do not need PostgreSQL, Redis or the API server running.
       - name: Run Ruff
         run: >
-          docker compose run --rm --no-deps rag_api
+          docker compose run --rm --no-deps
+          rag_api
           ruff check .
 
       - name: Run MyPy
         run: >
-          docker compose run --rm --no-deps rag_api
+          docker compose run --rm --no-deps
+          rag_api
           mypy --config-file mypy.ini
           api Database ingest retrieval reranking LLM Response utils
 
-      # Start application services only after static checks pass.
       - name: Start services
         run: docker compose up -d
 
       - name: Show container status
         run: docker compose ps
 
-      - name: Run Pytest
-        run: docker compose exec -T rag_api pytest -v
+      # -------- DEBUG STEP --------
+      - name: Check memory usage
+        run: docker stats --no-stream
+      # ----------------------------
 
-      - name: Show logs on failure
+      - name: Run Pytest
+        run: docker compose exec -T rag_api pytest -v py_tests
+
+      # -------- DEBUG STEP --------
+      - name: Show rag_api logs
+        if: always()
+        run: docker compose logs rag_api
+      # ----------------------------
+
+      - name: Show all logs on failure
         if: failure()
         run: docker compose logs
 
