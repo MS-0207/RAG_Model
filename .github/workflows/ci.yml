@@ -27,16 +27,17 @@ jobs:
       - name: Start services
         run: docker compose -f compose.yaml up -d
 
+      - name: Run MyPy
+        run: >
+          docker compose exec -T rag_api
+          mypy --config-file mypy.ini
+          api Database ingest retrieval reranking LLM Response utils
+
       - name: Show container status
         run: docker compose -f compose.yaml ps
 
       - name: Run Ruff
         run: docker compose -f compose.yaml exec -T rag_api ruff check .
-
-      - name: Run MyPy
-        run: >
-          docker compose exec -T rag_api
-          mypy api Database ingest retrieval reranking LLM Response utils
 
       - name: Run Pytest
         run: docker compose -f compose.yaml exec -T rag_api pytest
