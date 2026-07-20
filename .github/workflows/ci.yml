@@ -64,6 +64,15 @@ jobs:
           docker compose run --rm --no-deps
           rag_api
           pytest -vv -x --tb=long py_tests
+          --cov=api
+          --cov=Database
+          --cov=ingest
+          --cov=retrieval
+          --cov=reranking
+          --cov=LLM
+          --cov=Response
+          --cov=utils
+          --cov-report=term-missing
 
       - name: Check memory after tests
         if: always()
