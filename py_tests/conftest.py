@@ -14,6 +14,7 @@ def client() -> Generator[TestClient, None, None]:
     with TestClient(app) as test_client:
         yield test_client
 
+
 @pytest.fixture
 def mock_vector_store() -> Generator[MagicMock, None, None]:
     mock_db = MagicMock(spec=FAISS)

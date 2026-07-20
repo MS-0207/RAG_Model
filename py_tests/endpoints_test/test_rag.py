@@ -1,4 +1,4 @@
-from unittest.mock import (MagicMock, patch)
+from unittest.mock import MagicMock, patch
 from fastapi.testclient import TestClient
 from api.app import app
 from api.config import settings
@@ -8,13 +8,12 @@ client = TestClient(app)
 
 def create_mock_document(
     content: str,
-    source: str,) -> MagicMock:
-
+    source: str,
+) -> MagicMock:
     document = MagicMock()
     document.page_content = content
     document.metadata = {"source": source}
     return document
-
 
 
 @patch("api.routes.rag.run_rag_pipeline")
@@ -22,7 +21,6 @@ def test_ask(
     mock_run_rag_pipeline,
     mock_vector_store,
 ):
-
     mock_run_rag_pipeline.return_value = {
         "query": "What is RAG?",
         "context": [],
@@ -41,6 +39,7 @@ def test_ask(
         query="What is RAG?",
         db=mock_vector_store,
     )
+
 
 @patch("api.routes.rag.retrieve_documents")
 def test_retrieve(
@@ -75,6 +74,8 @@ def test_retrieve(
         query="What is RAG?",
         db=mock_vector_store,
     )
+
+
 @patch("api.routes.rag.cross_encoder_rerank")
 @patch("api.routes.rag.retrieve_documents")
 def test_rerank(
@@ -104,9 +105,7 @@ def test_rerank(
 
     assert response.status_code == 200
     assert response.json()["total_documents"] == 1
-    assert response.json()["documents"][0]["content"] == (
-        "Highest-ranked document"
-    )
+    assert response.json()["documents"][0]["content"] == ("Highest-ranked document")
 
     mock_retrieve_documents.assert_called_once_with(
         query="Explain RAG",
@@ -118,6 +117,7 @@ def test_rerank(
         docs=[retrieved_document],
         top_k=3,
     )
+
 
 @patch("api.routes.rag.generate_answer")
 @patch("api.routes.rag.cross_encoder_rerank")
@@ -231,6 +231,7 @@ def test_grounding(
         top_docs=[ranked_document],
     )
 
+
 def test_ask_empty_query(mock_vector_store):
     response = client.post(
         "/ask",
@@ -239,6 +240,7 @@ def test_ask_empty_query(mock_vector_store):
     )
 
     assert response.status_code == 422
+
 
 def test_ask_invalid_api_key(mock_vector_store):
     response = client.post(

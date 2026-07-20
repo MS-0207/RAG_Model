@@ -19,7 +19,6 @@ def test_ingest_and_query(
         "sources": ["transformer.pdf"],
     }
 
-
     response = client.post(
         "/ask",
         json={"query": "What is self-attention?"},
@@ -40,6 +39,7 @@ def test_ingest_and_query(
         query="What is self-attention?",
         db=mock_vector_store,
     )
+
 
 # ============================================================
 # 2. Unknown Question (No Hallucination)
