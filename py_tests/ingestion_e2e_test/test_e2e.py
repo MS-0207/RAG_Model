@@ -19,9 +19,11 @@ def test_ingest_and_query(
         "sources": ["transformer.pdf"],
     }
 
+
     response = client.post(
         "/ask",
         json={"query": "What is self-attention?"},
+        headers={"X-API-Key": "test-api-key"},
     )
 
     assert response.status_code == 200, response.text
