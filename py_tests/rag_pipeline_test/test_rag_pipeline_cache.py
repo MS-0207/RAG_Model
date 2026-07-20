@@ -101,23 +101,14 @@ def test_run_rag_pipeline_cache_miss(
     assert response["answer"] == "This is a generated answer."
 
     mock_get_cached_response.assert_called_once_with("What is RAG?")
-
     mock_get_all_docs.assert_called_once_with(mock_db)
-
     mock_bm25.assert_called_once()
-
     mock_vector.assert_called_once()
-
     mock_merge.assert_called_once()
-
     mock_rerank.assert_called_once()
-
     mock_generate.assert_called_once()
-
     mock_grounding.assert_called_once()
-
     mock_build_response.assert_called_once()
-
     mock_save_cache.assert_called_once_with(
         query="What is RAG?",
         response=response,

@@ -96,7 +96,6 @@ def build_retrieval_response(
 # Endpoints
 # --------------------------------------------------
 
-
 @router.post(
     "/ask",
     response_model=dict[str, Any],
