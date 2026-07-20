@@ -11,6 +11,7 @@ from utils.logger import get_logger
 from fastapi import Request
 from api.dependencies import get_vector_store, verify_api_key
 
+
 logger = get_logger(__name__)
 router = APIRouter(tags=["RAG"])
 

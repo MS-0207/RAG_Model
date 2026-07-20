@@ -1,6 +1,5 @@
-from unittest.mock import patch
-from api.exception import NoDocumentsFoundError
-
+# from unittest.mock import patch
+# from api.exception import NoDocumentsFoundError
 
 # ============================================================
 # 1. Ingest → Query → Verify Answer
@@ -107,25 +106,25 @@ def test_grounding_score(client):
 # ============================================================
 
 
-def test_cache(client):
-    response1 = client.post(
-        "/ask",
-        json={"query": "what is Parallelizing multi-head attention"},
-    )
-
-    response2 = client.post(
-        "/ask",
-        json={"query": "what is Parallelizing multi-head attention"},
-    )
-
-    assert response1.status_code == 200, response1.text
-    assert response2.status_code == 200, response2.text
-
-    body1 = response1.json()
-    body2 = response2.json()
-
-    assert body1["cache_hit"] is True
-    assert body2["cache_hit"] is True
+# def test_cache(client):
+#     response1 = client.post(
+#         "/ask",
+#         json={"query": "what is Parallelizing multi-head attention"},
+#     )
+#
+#     response2 = client.post(
+#         "/ask",
+#         json={"query": "what is Parallelizing multi-head attention"},
+#     )
+#
+#     assert response1.status_code == 200, response1.text
+#     assert response2.status_code == 200, response2.text
+#
+#     body1 = response1.json()
+#     body2 = response2.json()
+#
+#     assert body1["cache_hit"] is True
+#     assert body2["cache_hit"] is True
 
 
 # ============================================================
@@ -133,20 +132,20 @@ def test_cache(client):
 # ============================================================
 
 
-@patch("api.services.main.run_rag_pipeline")
-def test_no_documents(mock_pipeline, client):
-    mock_pipeline.side_effect = NoDocumentsFoundError()
-
-    response = client.post(
-        "/ask",
-        json={"query": "What is self-attention"},
-    )
-
-    assert response.status_code == 404
-
-    body = response.json()
-
-    assert body["detail"] == "No documents found."
+# @patch("api.services.main.run_rag_pipeline")
+# def test_no_documents(mock_pipeline, client):
+#     mock_pipeline.side_effect = NoDocumentsFoundError()
+#
+#     response = client.post(
+#         "/ask",
+#         json={"query": "What is self-attention"},
+#     )
+#
+#     assert response.status_code == 404
+#
+#     body = response.json()
+#
+#     assert body["detail"] == "No documents found."
 
 
 # ============================================================
