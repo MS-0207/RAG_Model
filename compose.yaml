@@ -25,7 +25,7 @@ services:
     env_file:
       - .env
     volumes:
-      - .:/app        #bind mount --directly access window folder from container instead making copy
+      - .:/app  #bind mount --directly access window folder from container instead making copy
       - ./data/raw:/app/data/raw
       - ./data/processed:/app/data/processed
       - ./embeddings/cache:/app/embeddings/cache
