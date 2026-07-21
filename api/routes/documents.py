@@ -12,6 +12,7 @@ router = APIRouter(
     tags=["Documents"],
 )
 
+
 class IngestResponse(BaseModel):
     status: str
     message: str

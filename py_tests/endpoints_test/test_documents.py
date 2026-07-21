@@ -49,7 +49,6 @@ def test_delete_document(mock_delete_document):
     mock_delete_document.assert_called_once_with("sample.pdf")
 
 
-
 @patch("api.routes.documents.run_ingestion_task.delay")
 def test_ingest_documents(mock_delay):
     mock_delay.return_value.id = "test-task-123"

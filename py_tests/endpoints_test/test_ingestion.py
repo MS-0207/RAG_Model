@@ -104,6 +104,7 @@ def test_ingestion_no_documents(mock_load_all_documents):
     except NoDocumentsFoundError as exc:
         assert str(exc) == "No supported documents found."
 
+
 #
 # @patch("api.routes.documents.run_ingestion_pipeline")
 # def test_ingest_no_documents_response(

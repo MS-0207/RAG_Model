@@ -1,13 +1,15 @@
 name: CI
-
+#trigger section
+#You push to any branch.
+#You create or update a pull request.
 on:
   push:
   pull_request:
-
+#Then GitHub runs the job called test:
 jobs:
   test:
     runs-on: ubuntu-latest
-
+#Exact execution order
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -20,9 +22,9 @@ jobs:
           API_KEY=test-api-key
           OPENAI_API_KEY=test-key
           
-          RAW_DIR = /app/data/raw
-          PROCESSED_DIR = /app/data/processed
-          VECTOR_STORE_DIR = /app/embeddings/cache
+          RAW_DIR=/app/data/raw
+          PROCESSED_DIR=/app/data/processed
+          VECTOR_STORE_DIR=/app/embeddings/cache
           
           REDIS_HOST=redis
           REDIS_PORT=6379
@@ -30,8 +32,10 @@ jobs:
           REDIS_TTL=3600
           
           EOF
+#Build Docker images:Docker reads your Dockerfile and Compose configuration and builds the rag_api image
+#and any other buildable services. No containers are running yet.
 
-      - name: Build containers
+      - name: Build Docker Image
         run: docker compose build
 
       - name: Run Ruff
